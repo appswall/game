@@ -1,0 +1,27 @@
+.ya { 
+    margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    width: 89%;
+    height: 50px;
+}
+.ya2 { 
+  margin: 0;
+  max-height: 80%; 
+  max-width: 26%; 
+  left: 3%;  
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ya3 { 
+  margin: 0;
+  max-height: 80%; 
+  max-width: 26%; 
+  right: 3%;  
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
