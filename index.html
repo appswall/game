@@ -98,7 +98,7 @@ function friendaddf () {
 		   return document.getElementsByTagName("head")[0].appendChild(e);
 		}		
 		
-		var srvUrl = "/";
+		var srvUrl = "./";
 		var addGZ = ".gz";
 		var name = "build_html";
 		
@@ -130,9 +130,9 @@ function friendaddf () {
 			udata.lang = getLang();
 			
 			tm = Date.now();
-			let scr = dhtmlLoadScript(srvUrl+"ver.js?t="+tm);
+			let scr = dhtmlLoadScript(srvUrl+"./ver.js?t="+tm);
 			scr.onload = function() { 
-				let scr = dhtmlLoadScript(srvUrl+"/common_js.js?v="+ver);
+				let scr = dhtmlLoadScript(srvUrl+"./common_js.js?v="+ver);
 				scr.onload = function() { 				
 					LoadScripts(ver);
 				}
