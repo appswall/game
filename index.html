@@ -232,9 +232,9 @@
 		var engineJS = document.createElement('script');
 		engineJS.type = 'text/javascript';
 		if (Module['isWASMSupported']) {
-			engineJS.src = 'vkyesno_wasm.js';
+			engineJS.src = 'https://lampogolovii.github.io/vk-yesno/vkyesno_wasm.js';
 		} else {
-			engineJS.src = 'vkyesno_asmjs.js';
+			engineJS.src = 'https://lampogolovii.github.io/vk-yesno/vkyesno_asmjs.js';
 		}
 		document.head.appendChild(engineJS);
 	}
