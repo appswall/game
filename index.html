@@ -78,6 +78,70 @@ function friendaddf () {
 }
 
 </script>
+	
+	
+	
+	
+	<script type="text/javascript">  
+		//window.onerror = onerr;
+		
+		function onerr() {		
+			//setTimeout(function(){ window.location.reload(); },3000);
+		}
+		
+		function dhtmlLoadScript(url)
+		{
+		   var e = document.createElement("script");
+		   e.src = url;
+		   e.type="application/javascript";
+		   var res=0;
+		   return document.getElementsByTagName("head")[0].appendChild(e);
+		}		
+		
+		var srvUrl = "https://sslots.com/victory/";
+		var addGZ = ".gz";
+		var name = "build_html";
+		
+		var gameInstance;		
+		var cntr=0;
+		var AdReady = false;
+		
+		var in_group=0;
+		var started = 0; //в unity отправлены данные по игроку
+		
+		let udata = {game_id:0, yaashow:1, onstart:1, orders:'', lang:0, group_url:'', ismobile:0, network: 1, acheckg:1, showfr:0, groups:[], user_data:{uid:'0',name:'',pic:'',stat:0}, sizeX: 0, sizeY: 0, code: true, test: false }; //stat - кол-во друзей
+		
+		function getLang() {
+			var lang = navigator.language.slice(0, 2) || navigator.userLanguage.slice(0, 2);
+			if ( lang  == "ru" ) return 0;
+			else return 1;
+		}
+		
+		function Go() {
+			if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+				udata.ismobile = 2; //iOS mobile
+			}
+			else if (/Android|webOS|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+				udata.ismobile = 1; //Android mobile
+			} else {
+				udata.ismobile = 0;	
+			}				
+			
+			udata.lang = getLang();
+			
+			tm = Date.now();
+			let scr = dhtmlLoadScript(srvUrl+"ver.js?t="+tm);
+			scr.onload = function() { 
+				let scr = dhtmlLoadScript(srvUrl+"scripts/common_js.js?v="+ver);
+				scr.onload = function() { 				
+					LoadScripts(ver);
+				}
+			}
+		}
+    </script>
+	
+	
+	
 </head> 
  
 <body> 
