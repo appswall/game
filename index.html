@@ -1,193 +1,189 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <link href="https://driverating.ru/vk/2048/style/main.css" rel="stylesheet" type="text/css">
-  <script src="//vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-  <script src="https://ad.mail.ru/static/vkadman.min.js"></script>
-  <script src="https://js.appscentrum.com/scr/preroll.js"></script>
-
-  <script>
-  VK.api('isAppUser',{test_mode: test_mode},function(data) {
-   if (data.error)
-      alert(data.error.error_msg);
-   else if (data.response) {
-      alert(data.response);
-   }
-});
-	$(document).ready(function(){
-	    window.focus();
-	});
-	
-  	var user_highscore = ;
-  	var highscores = {};
-    var viewer_id = 0;
-    var auth_key = "";
-  	var app_friends=null;
-  	var app_friends_str="";
-  	var app_friends_data=[];
-  VK.init(function() { 
-
-	var user_id = 0;
-	var app_id = 8129185;
-
-VK.api('users.get',{user_ids:app_friends_str, fields:'photo_50'},function(data){fR(data.response); rS();});
-  }, function() { 
-  //api failed
-  alert('Произошла ошибка. Свяжитесь, пожалуйста, с разработчиком!');
-}, '5.21'); 
-
-function iF() {
-	VK.callMethod("showInviteBox", 256);
-}
-
-function fR(data) {
-$(data).each(function(index){
-	app_friends_data[this.id]= {'photo': this.photo_50, 'name' : this.first_name};
-});
-app_friends_data[viewer_id].name='Ты';
-}
-
-function rS() {
-$('.friend table').hide();
-
-$.getJSON('api.php?a=gS',{ids:app_friends_str,viewer_id:viewer_id,auth_key:auth_key}, function(data) {
-highscores = data;
-$(highscores).each(function(index){
-	i = highscores[index].vkid;
-	s = highscores[index].highscore;
-	$('#ftop'+index).html('<table class="hero"><tr><td width="50px"><div class="top_av"><img src="'+
-	app_friends_data[i].photo+'" /></div></td><td align="center">'+app_friends_data[i].name+'<br/><span id="score_'+i+'">'+
-	s+'</span></td></tr></table>');
-
-	$('#ftop'+index+' table').show(1000);
-});
-});
-}
-
-  </script>
-  <style>
-
-  .top_av {
-    padding: 0;
-     -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -khtml-border-radius: 8px;  
-    border-radius: 8px;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-}
-
-.hero {
-width:100%;
-}
-
-  .friend {
-  height:55px;
-  width:160px;
-  position: relative;
-display: inline-block;
-background: #bbada0;
-
-padding: 5px 5px;
-margin-top: 8px;
-
-font-size: 15px;
-//line-height: 40px;
-font-weight: bold;
-border-radius: 3px;
-color: white;
-text-align: center;
-  }
-
-  .friend a {
-  	color:white;
-  }
-  </style>
+    <meta charset=utf-8>
+    <meta name=viewport
+          content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,viewport-fit=cover">
+    <title>2048</title>
+    <style>body,
+    html {
+        overflow: hidden;
+        background-color: #f8f8ed;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+    }</style>
+    <link rel=stylesheet href=/static/loader.css>
+    <script type=text/javascript src=//ad.mail.ru/static/admanhtml/rbadman-html5.min.js charset=utf-8></script>
+    <script type=text/javascript src=//vk.com/js/api/adman_init.js charset=utf-8></script>
+    <script type=text/javascript src=//vk.com/js/api/xd_connection.js?2 charset=utf-8></script>
+    <link href=/static/css/app.7135558af816ee178c92098555c682f7.css rel=stylesheet>
+    <link href="./static/css/2.4bc62760.chunk.css" rel="stylesheet">
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+    </script>
 </head>
 <body>
-<div style="width:180px; float:right; text-align:center;">
-<h2>Друзья</h3>
-<div id="ftop0" class="friend"><a href="#" style="margin-top:20px;" onclick="iF();">Нажми, чтобы<br/>пригласить друга</a>
-</div><div id="ftop1" class="friend"><a href="#" style="margin-top:20px;" onclick="iF();">Нажми, чтобы<br/>пригласить друга</a>
-</div><div id="ftop2" class="friend"><a href="#" style="margin-top:20px;" onclick="iF();">Нажми, чтобы<br/>пригласить друга</a>
-</div><div id="ftop3" class="friend"><a href="#" style="margin-top:20px;" onclick="iF();">Нажми, чтобы<br/>пригласить друга</a>
-</div><div id="ftop4" class="friend"><a href="#" style="margin-top:20px;" onclick="iF();">Нажми, чтобы<br/>пригласить друга</a>
-</div><div id="ftop5" class="friend"><a href="#" style="margin-top:20px;" onclick="iF();">Нажми, чтобы<br/>пригласить друга</a>
-</div><div id="ftop6" class="friend"><a href="#" style="margin-top:20px;" onclick="iF();">Нажми, чтобы<br/>пригласить друга</a>
-</div><div id="ftop7" class="friend"><a href="#" style="margin-top:20px;" onclick="iF();">Нажми, чтобы<br/>пригласить друга</a>
-</div>
-</div>
-  <div class="container">
-<!--    <div class="heading">
-      <h1 class="title">2048</h1>
-    </div>-->
-
-       
-    <div class="above-game">
-		<!-- <p class="game-intro">Собери <strong>2048!</strong></p>-->
-      <div class="new-game" style="float:left; margin-top:17px">
-      <a class="restart-button">Новая игра</a>
-      </div>
-
-
-	 <div class="scores-container">
-        <div class="score-container">0</div>
-        <div class="best-container">0</div>
-      </div>
-      
+<div id=root>
+    <div class="h loaderCircle">
+        <svg width=54px height=54px viewBox="0 0 54 54" version=1.1 xmlns=http://www.w3.org/2000/svg>
+            <g stroke=none stroke-width=1 fill=none fill-rule=evenodd>
+                <g>
+                    <g transform="translate(3.000000, 0.000000)">
+                        <circle stroke="rgba(185, 173, 159, 0.2)" stroke-width=6 cx=24 cy=27 r=24></circle>
+                        <circle fill=#B9AD9F cx=24 cy=3 r=3></circle>
+                        <circle fill=#B9AD9F cx=44.7999992 cy=15 r=3></circle>
+                        <path d="M47.0944984,13.0050805 C42.3597415,5.20847873 33.7881234,0 24,0 L24,6 C31.6423836,6 38.3312747,10.0823869 42.0049167,16.1854041 L47.0944984,13.0050805 Z"
+                              id=Combined-Shape fill=#B9AD9F></path>
+                    </g>
+                </g>
+            </g>
+        </svg>
     </div>
+</div>
+<script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script>
+<script type=text/javascript src=/static/js/vendor.7fc4b4556ab7b6bceb3f.js></script>
+<script type=text/javascript src=/static/js/app.06365ed64f953d4e9661.js></script>
+<script>try {
+	var img = new Image();
+	img.src = "/static/img/cover-nw-2."+Date.now()+".png";
+	window.xImg = img;
+} catch (e) {
+	window.le = e;
+}
+var userId = (window.location.toString().match(/viewer_id=([0-9]+)/gmu) || [""])[0].replace('viewer_id=', '')
+var counterId = 'UA-103446290-15'
 
-    <div class="game-container">
-      <div class="game-message">
-        <p></p>
-        <div class="lower">
-	        <a class="keep-playing-button">Продолжить</a>
-          <a class="retry-button">Играть снова!</a>
-        </div>
-      </div>
+var ua = navigator.userAgent.toLowerCase();
+var isAndroid = ua.indexOf("android") > -1;
+window.connect = window.bridge
+var connect = window.bridge
+if (connect.supports("VKWebAppGetAds") && !isAndroid) {
+// if (connect.supports("VKWebAppShowNativeAds") && !isAndroid) {
+	window.admanInit = function (a, onReady, onNoAds) {
+		window.gtag('config', counterId, {
+			'page_title' : "VKWebAppShowNativeAds",
+			'page_path': '/VKWebAppShowNativeAds',
+			'client_id': userId,
+		});
+		// connect.send("VKWebAppShowNativeAds", {"ad_format":"preloader"})
+		// 	.then(function () {
+		// 		window.gtag('config', counterId, {
+		// 			'page_title' : "VKWebAppShowNativeAdsDone",
+		// 			'page_path': '/VKWebAppShowNativeAdsDone',
+		// 			'client_id': userId,
+		// 		});
+		// 	})
+		// 	.catch(function (e) {
+		// 		window.gtag('config', counterId, {
+		// 			'page_title' : e.message,
+		// 			'page_path': '/VKWebAppShowNativeAdsFail',
+		// 			'client_id': userId,
+		// 		});
+		// 	})
 
-      <div class="grid-container">
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-      </div>
+        if (window.closeAdvBanner) {
+        	try {
+				window.closeAdvBanner()
+			} catch(e) {
+        		console.error(e);
+            }
+        }
 
-      <div class="tile-container">
+        var div = document.createElement('div');
+        div.style.position = 'fixed'
+        div.style.left = '0'
+        div.style.right = '0'
+        div.style.bottom = '0'
+        div.style.zIndex = '999999'
+        document.body.appendChild(div)
+		window.closeAdvBanner = window.renderBannerIntoNode(div)
+        console.log('banner created!')
 
-      </div>
-    </div>
 
-    <p class="game-explanation">
-      <strong class="important">Правила игры:</strong> Используй <strong>клавиши со стрелками</strong> на клавиатуре для перемещения плиток. Когда ты столкнёшь две плитки с одинаковым числом, <strong>они объединятся!</strong><br/>Если игра не реагирует на нажатие клавиш, щелкни левой кнопкой мыши по игровому полю.    </p>
-  </div>
-<a href="//vk.com/yes2048" target="_blank"><img src="group2048.png" /></a>
-<script src="js/script.php?v=2&l=bind_polyfill.js,classlist_polyfill.js,animframe_polyfill.js,keyboard_input_manager.js,html_actuator.js,grid.js,tile.js,local_storage_manager.js,game_manager.js,application.js"></script>
+
+		setTimeout(onReady, 1000)
+
+	}
+	window.gtag('config', counterId, {
+		'page_title' : "С рекламой",
+		'page_path': '/ads',
+		'client_id': userId,
+	});
+} else {
+	// window.admanInit = function (a, onReady, onNoAds) {
+	// 	setTimeout(onReady, 1000)
+	// }
+	window.gtag('config', counterId, {
+		'page_title' : "Без рекламы",
+		'page_path': '/noads',
+		'client_id': userId,
+	});
+}</script>
+
+
+<script>!function (e) {
+	function t(t) {
+		for (var n, p, l = t[0], a = t[1], f = t[2], c = 0, s = []; c < l.length; c++) p = l[c], Object.prototype.hasOwnProperty.call(o, p) && o[p] && s.push(o[p][0]), o[p] = 0
+		for (n in a) Object.prototype.hasOwnProperty.call(a, n) && (e[n] = a[n])
+		for (i && i(t); s.length;) s.shift()()
+		return u.push.apply(u, f || []), r()
+	}
+
+	function r() {
+		for (var e, t = 0; t < u.length; t++) {
+			for (var r = u[t], n = !0, l = 1; l < r.length; l++) {
+				var a = r[l]
+				0 !== o[a] && (n = !1)
+			}
+			n && (u.splice(t--, 1), e = p(p.s = r[0]))
+		}
+		return e
+	}
+
+	var n = {}, o = {1: 0}, u = []
+
+	function p(t) {
+		if (n[t]) return n[t].exports
+		var r = n[t] = {i: t, l: !1, exports: {}}
+		return e[t].call(r.exports, r, r.exports, p), r.l = !0, r.exports
+	}
+
+	p.m = e, p.c = n, p.d = function (e, t, r) {
+		p.o(e, t) || Object.defineProperty(e, t, {enumerable: !0, get: r})
+	}, p.r = function (e) {
+		"undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
+	}, p.t = function (e, t) {
+		if (1 & t && (e = p(e)), 8 & t) return e
+		if (4 & t && "object" == typeof e && e && e.__esModule) return e
+		var r = Object.create(null)
+		if (p.r(r), Object.defineProperty(r, "default", {
+			enumerable: !0,
+			value: e
+		}), 2 & t && "string" != typeof e) for (var n in e) p.d(r, n, function (t) {
+			return e[t]
+		}.bind(null, n))
+		return r
+	}, p.n = function (e) {
+		var t = e && e.__esModule ? function () {
+			return e.default
+		} : function () {
+			return e
+		}
+		return p.d(t, "a", t), t
+	}, p.o = function (e, t) {
+		return Object.prototype.hasOwnProperty.call(e, t)
+	}, p.p = "./"
+	var l = this["webpackJsonpvk-apps-template"] = this["webpackJsonpvk-apps-template"] || [], a = l.push.bind(l)
+	l.push = t, l = l.slice()
+	for (var f = 0; f < l.length; f++) t(l[f])
+	var i = a
+	r()
+}([])</script>
+<script src="./static/js/2.fc2e0594.chunk.js"></script>
+<script src="./static/js/main.259fd9b4.chunk.js"></script>
 </body>
 </html>
