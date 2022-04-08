@@ -1,189 +1,1677 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset=utf-8>
-    <meta name=viewport
-          content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,viewport-fit=cover">
-    <title>2048</title>
-    <style>body,
-    html {
-        overflow: hidden;
-        background-color: #f8f8ed;
-        padding: 0;
-        margin: 0;
-        height: 100%;
-    }</style>
-    <link rel=stylesheet href=/static/loader.css>
-    <script type=text/javascript src=//ad.mail.ru/static/admanhtml/rbadman-html5.min.js charset=utf-8></script>
-    <script type=text/javascript src=//vk.com/js/api/adman_init.js charset=utf-8></script>
-    <script type=text/javascript src=//vk.com/js/api/xd_connection.js?2 charset=utf-8></script>
-    <link href=/static/css/app.7135558af816ee178c92098555c682f7.css rel=stylesheet>
-    <link href="./static/css/2.4bc62760.chunk.css" rel="stylesheet">
-    <script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-    </script>
-</head>
-<body>
-<div id=root>
-    <div class="h loaderCircle">
-        <svg width=54px height=54px viewBox="0 0 54 54" version=1.1 xmlns=http://www.w3.org/2000/svg>
-            <g stroke=none stroke-width=1 fill=none fill-rule=evenodd>
-                <g>
-                    <g transform="translate(3.000000, 0.000000)">
-                        <circle stroke="rgba(185, 173, 159, 0.2)" stroke-width=6 cx=24 cy=27 r=24></circle>
-                        <circle fill=#B9AD9F cx=24 cy=3 r=3></circle>
-                        <circle fill=#B9AD9F cx=44.7999992 cy=15 r=3></circle>
-                        <path d="M47.0944984,13.0050805 C42.3597415,5.20847873 33.7881234,0 24,0 L24,6 C31.6423836,6 38.3312747,10.0823869 42.0049167,16.1854041 L47.0944984,13.0050805 Z"
-                              id=Combined-Shape fill=#B9AD9F></path>
-                    </g>
-                </g>
-            </g>
-        </svg>
-    </div>
-</div>
-<script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script>
-<script type=text/javascript src=/static/js/vendor.7fc4b4556ab7b6bceb3f.js></script>
-<script type=text/javascript src=/static/js/app.06365ed64f953d4e9661.js></script>
-<script>try {
-	var img = new Image();
-	img.src = "/static/img/cover-nw-2."+Date.now()+".png";
-	window.xImg = img;
-} catch (e) {
-	window.le = e;
-}
-var userId = (window.location.toString().match(/viewer_id=([0-9]+)/gmu) || [""])[0].replace('viewer_id=', '')
-var counterId = 'UA-103446290-15'
+	<!DOCTYPE html>
+	<html lang="ru-RU">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+		<title>Andles Games &#8212; Инди разработчик игр</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Andles Games &raquo; Лента" href="https://andlesgames.ru/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Andles Games &raquo; Лента комментариев" href="https://andlesgames.ru/comments/feed/" />
+<script>
+var pagelayer_ajaxurl = "https://andlesgames.ru/wp-admin/admin-ajax.php?";
+var pagelayer_global_nonce = "a91b6cf58d";
+var pagelayer_server_time = 1649413849;
+var pagelayer_is_live = "";
+var pagelayer_facebook_id = "";
+var pagelayer_settings = {"post_types":["post","page"],"enable_giver":false,"max_width":1170,"tablet_breakpoint":768,"mobile_breakpoint":360,"sidebar":false,"body_font":false,"color":false};
+var pagelayer_recaptch_lang = "";
+</script><style id="popularfx-global-styles" type="text/css">
+.site-header {background-color:#ffffff!important;}
+.site-title a {color:#171717!important;}
+.site-title a { font-size: 30 px; }
+.site-description {color:#171717 !important;}
+.site-description {font-size: 15px;}
+.site-footer {background-color:#171717! important;}
 
-var ua = navigator.userAgent.toLowerCase();
-var isAndroid = ua.indexOf("android") > -1;
-window.connect = window.bridge
-var connect = window.bridge
-if (connect.supports("VKWebAppGetAds") && !isAndroid) {
-// if (connect.supports("VKWebAppShowNativeAds") && !isAndroid) {
-	window.admanInit = function (a, onReady, onNoAds) {
-		window.gtag('config', counterId, {
-			'page_title' : "VKWebAppShowNativeAds",
-			'page_path': '/VKWebAppShowNativeAds',
-			'client_id': userId,
-		});
-		// connect.send("VKWebAppShowNativeAds", {"ad_format":"preloader"})
-		// 	.then(function () {
-		// 		window.gtag('config', counterId, {
-		// 			'page_title' : "VKWebAppShowNativeAdsDone",
-		// 			'page_path': '/VKWebAppShowNativeAdsDone',
-		// 			'client_id': userId,
-		// 		});
-		// 	})
-		// 	.catch(function (e) {
-		// 		window.gtag('config', counterId, {
-		// 			'page_title' : e.message,
-		// 			'page_path': '/VKWebAppShowNativeAdsFail',
-		// 			'client_id': userId,
-		// 		});
-		// 	})
-
-        if (window.closeAdvBanner) {
-        	try {
-				window.closeAdvBanner()
-			} catch(e) {
-        		console.error(e);
-            }
-        }
-
-        var div = document.createElement('div');
-        div.style.position = 'fixed'
-        div.style.left = '0'
-        div.style.right = '0'
-        div.style.bottom = '0'
-        div.style.zIndex = '999999'
-        document.body.appendChild(div)
-		window.closeAdvBanner = window.renderBannerIntoNode(div)
-        console.log('banner created!')
-
-
-
-		setTimeout(onReady, 1000)
-
-	}
-	window.gtag('config', counterId, {
-		'page_title' : "С рекламой",
-		'page_path': '/ads',
-		'client_id': userId,
-	});
-} else {
-	// window.admanInit = function (a, onReady, onNoAds) {
-	// 	setTimeout(onReady, 1000)
-	// }
-	window.gtag('config', counterId, {
-		'page_title' : "Без рекламы",
-		'page_path': '/noads',
-		'client_id': userId,
-	});
-}</script>
-
-
-<script>!function (e) {
-	function t(t) {
-		for (var n, p, l = t[0], a = t[1], f = t[2], c = 0, s = []; c < l.length; c++) p = l[c], Object.prototype.hasOwnProperty.call(o, p) && o[p] && s.push(o[p][0]), o[p] = 0
-		for (n in a) Object.prototype.hasOwnProperty.call(a, n) && (e[n] = a[n])
-		for (i && i(t); s.length;) s.shift()()
-		return u.push.apply(u, f || []), r()
-	}
-
-	function r() {
-		for (var e, t = 0; t < u.length; t++) {
-			for (var r = u[t], n = !0, l = 1; l < r.length; l++) {
-				var a = r[l]
-				0 !== o[a] && (n = !1)
+</style><style id="pagelayer-global-styles" type="text/css">
+.pagelayer-row-stretch-auto > .pagelayer-row-holder, .pagelayer-row-stretch-full > .pagelayer-row-holder.pagelayer-width-auto{ max-width: 1170px; margin-left: auto; margin-right: auto;}
+@media (min-width: 769px){
+			.pagelayer-hide-desktop{
+				display:none !important;
 			}
-			n && (u.splice(t--, 1), e = p(p.s = r[0]))
 		}
-		return e
+
+		@media (max-width: 768px) and (min-width: 361px){
+			.pagelayer-hide-tablet{
+				display:none !important;
+			}
+			.pagelayer-wp-menu-holder[data-drop_breakpoint="tablet"] .pagelayer-wp_menu-ul{
+				display:none;
+			}
+		}
+
+		@media (max-width: 360px){
+			.pagelayer-hide-mobile{
+				display:none !important;
+			}
+			.pagelayer-wp-menu-holder[data-drop_breakpoint="mobile"] .pagelayer-wp_menu-ul{
+				display:none;
+			}
+		}
+@media (max-width: 768px){
+	[class^="pagelayer-offset-"],
+	[class*=" pagelayer-offset-"] {
+		margin-left: 0;
 	}
 
-	var n = {}, o = {1: 0}, u = []
-
-	function p(t) {
-		if (n[t]) return n[t].exports
-		var r = n[t] = {i: t, l: !1, exports: {}}
-		return e[t].call(r.exports, r, r.exports, p), r.l = !0, r.exports
+	.pagelayer-row .pagelayer-col {
+		margin-left: 0;
+		width: 100%;
 	}
+	.pagelayer-row.pagelayer-gutters .pagelayer-col {
+		margin-bottom: 16px;
+	}
+	.pagelayer-first-sm {
+		order: -1;
+	}
+	.pagelayer-last-sm {
+		order: 1;
+	}
+	
 
-	p.m = e, p.c = n, p.d = function (e, t, r) {
-		p.o(e, t) || Object.defineProperty(e, t, {enumerable: !0, get: r})
-	}, p.r = function (e) {
-		"undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
-	}, p.t = function (e, t) {
-		if (1 & t && (e = p(e)), 8 & t) return e
-		if (4 & t && "object" == typeof e && e && e.__esModule) return e
-		var r = Object.create(null)
-		if (p.r(r), Object.defineProperty(r, "default", {
-			enumerable: !0,
-			value: e
-		}), 2 & t && "string" != typeof e) for (var n in e) p.d(r, n, function (t) {
-			return e[t]
-		}.bind(null, n))
-		return r
-	}, p.n = function (e) {
-		var t = e && e.__esModule ? function () {
-			return e.default
-		} : function () {
-			return e
-		}
-		return p.d(t, "a", t), t
-	}, p.o = function (e, t) {
-		return Object.prototype.hasOwnProperty.call(e, t)
-	}, p.p = "./"
-	var l = this["webpackJsonpvk-apps-template"] = this["webpackJsonpvk-apps-template"] || [], a = l.push.bind(l)
-	l.push = t, l = l.slice()
-	for (var f = 0; f < l.length; f++) t(l[f])
-	var i = a
-	r()
-}([])</script>
-<script src="./static/js/2.fc2e0594.chunk.js"></script>
-<script src="./static/js/main.259fd9b4.chunk.js"></script>
+}
+
+</style><script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/andlesgames.ru\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.9.3"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style>
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='pagelayer-frontend-css'  href='https://andlesgames.ru/wp-content/plugins/pagelayer/css/combined.css?ver=1.6.6' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://andlesgames.ru/wp-includes/css/dist/block-library/style.min.css?ver=5.9.3' media='all' />
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='popularfx-style-css'  href='https://andlesgames.ru/wp-content/uploads/popularfx-templates/immersion/style.css?ver=1.2.0' media='all' />
+<link rel='stylesheet' id='popularfx-sidebar-css'  href='https://andlesgames.ru/wp-content/themes/popularfx/sidebar.css?ver=1.2.0' media='all' />
+<script src='https://andlesgames.ru/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script src='https://andlesgames.ru/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script src='https://andlesgames.ru/wp-content/plugins/pagelayer/js/combined.js?ver=1.6.6' id='pagelayer-frontend-js'></script>
+<link rel="https://api.w.org/" href="https://andlesgames.ru/wp-json/" /><link rel="alternate" type="application/json" href="https://andlesgames.ru/wp-json/wp/v2/pages/14" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://andlesgames.ru/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://andlesgames.ru/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.9.3" />
+<link rel="canonical" href="https://andlesgames.ru/" />
+<link rel='shortlink' href='https://andlesgames.ru/' />
+<link rel="alternate" type="application/json+oembed" href="https://andlesgames.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fandlesgames.ru%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://andlesgames.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fandlesgames.ru%2F&#038;format=xml" />
+<style>.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>	</head>
+
+	<body class="home page-template-default page page-id-14 popularfx-body pagelayer-body">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>	
+	<header class="pagelayer-header"><div pagelayer-id="av02643" class="p-av02643 pagelayer-row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="av02643">.p-av02643 .pagelayer-col-holder{padding: 10px}
+.p-av02643>.pagelayer-row-holder .pagelayer-col{align-content: center}
+.p-av02643 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-av02643 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-av02643 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-av02643 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-av02643 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="mdh2152" class="p-mdh2152 pagelayer-col">
+<style pagelayer-style-id="mdh2152">.p-mdh2152 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="mdh2152"]{width: 50%}
+.p-mdh2152 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="p121851" class="p-p121851 pagelayer-wp_title">
+<style pagelayer-style-id="p121851">.p-p121851 .pagelayer-wp-title-heading{font-family: Cabin; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1.5em !important; text-transform: Uppercase !important; letter-spacing: 3px !important; word-spacing: px !important;color:#012233;text-align:left;padding: 0px 0px 0px 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-p121851 .pagelayer-wp-title-heading{font-family: ; font-size: 24px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-p121851 .pagelayer-wp-title-heading{font-family: ; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-wp-title-content">
+			<div class="pagelayer-wp-title-section">
+				<a href="https://andlesgames.ru" class="pagelayer-wp-title-link pagelayer-ele-link">
+					
+					<div class="pagelayer-wp-title-holder">
+						<div class="pagelayer-wp-title-heading">Andles Games</div>
+						
+					</div>
+				</a>
+			</div>			
+		<div></div></div></div>
+</div></div>
+<div pagelayer-id="6yj4057" class="p-6yj4057 pagelayer-col">
+<style pagelayer-style-id="6yj4057">.p-6yj4057 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="6yj4057"]{width: 50%}
+.p-6yj4057 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="2333981" class="p-2333981 pagelayer-wp_menu">
+<style pagelayer-style-id="2333981">.p-2333981 .pagelayer-wp_menu-ul{text-align:right}
+.p-2333981 .pagelayer-wp-menu-container li.menu-item{list-style: none}
+.p-2333981 .pagelayer-wp_menu-ul>li a:first-child{color: #012233}
+.p-2333981 .pagelayer-wp_menu-ul>li>a:hover{color: #012233}
+.p-2333981 .pagelayer-wp_menu-ul>li.pagelayer-active-sub-menu>a:hover{color: #012233}
+.p-2333981 .pagelayer-wp_menu-ul>li.current-menu-item>a{color: #012233}
+.p-2333981 .pagelayer-wp-menu-container ul li.menu-item > a{font-family: Cabin !important; font-size: 13px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important}
+.p-2333981 .pagelayer-wp_menu-ul>li>a{padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom	: 10px}
+@media (max-width: 360px){.p-2333981 .pagelayer-wp_menu-ul>li>a{padding-top: 10px;padding-bottom	: 10px}}
+.p-2333981 .pagelayer-menu-type-horizontal .sub-menu{left:0px}
+.p-2333981 .pagelayer-menu-type-horizontal .sub-menu .sub-menu{left:unset;left:100% !important;top:0px}
+.p-2333981 .pagelayer-wp-menu-container ul.sub-menu>li a{color: #ffffff}
+.p-2333981 .pagelayer-wp-menu-container ul.sub-menu{background-color: #0986c0}
+.p-2333981 .pagelayer-wp-menu-container ul.sub-menu li a{padding-left: 10px;padding-right: 10px;padding-top: 10px;padding-bottom	: 10px}
+.p-2333981 .pagelayer-wp-menu-container .sub-menu a{margin-left: 10px}
+.p-2333981 .pagelayer-wp-menu-container .sub-menu .sub-menu a{margin-left: calc(2 * 10px)}
+.p-2333981 .pagelayer-primary-menu-bar{text-align:center}
+@media (max-width: 768px) and (min-width: 361px){.p-2333981 .pagelayer-primary-menu-bar{text-align:right}}
+@media (max-width: 360px){.p-2333981 .pagelayer-primary-menu-bar{text-align:right}}
+.p-2333981 .pagelayer-primary-menu-bar i{color:#ffffff;background-color:#012233;font-size:30px}
+@media (max-width: 768px) and (min-width: 361px){.p-2333981 .pagelayer-primary-menu-bar i{font-size:24px;padding:8 {{val[1]}}}}
+@media (max-width: 360px){.p-2333981 .pagelayer-primary-menu-bar i{font-size:20px;padding:6 {{val[1]}}}}
+.p-2333981 .pagelayer-menu-type-dropdown{width:30%;background-color:#ffffff}
+@media (max-width: 768px) and (min-width: 361px){.p-2333981 .pagelayer-menu-type-dropdown{width:60%}}
+@media (max-width: 360px){.p-2333981 .pagelayer-menu-type-dropdown{width:60%}}
+.p-2333981 .pagelayer-menu-type-dropdown .pagelayer-wp_menu-ul{width:100%;top: 8%; transform: translateY(-8%)}
+.p-2333981 .pagelayer-wp_menu-close i{font-size:25px;padding:8px;color:rgba(255,255,255,0.41);background-color:rgba(0,0,0,0.21);-webkit-transition: all 600ms !important; transition: all 600ms !important}
+@media (max-width: 768px) and (min-width: 361px){.p-2333981 .pagelayer-wp_menu-close i{font-size:24px;padding:8px}}
+@media (max-width: 360px){.p-2333981 .pagelayer-wp_menu-close i{font-size:20px;padding:6px}}
+.p-2333981 .pagelayer-wp_menu-close i:hover{color:#ffffff;background-color:#000000}
+.p-2333981 .pagelayer-wp_menu-ul .menu-item a{
+justify-content:center;
+}
+</style><div class="pagelayer-wp-menu-holder" data-layout="horizontal" data-submenu_ind="caret-down" data-drop_breakpoint="tablet">
+			<div class="pagelayer-primary-menu-bar"><i class="fas fa-bars"></i></div>
+			<div class="pagelayer-wp-menu-container pagelayer-menu-type-horizontal pagelayer-menu-hover- slide pagelayer-wp_menu-right" data-align="right">
+				<div class="pagelayer-wp_menu-close"><i class="fas fa-times"></i></div>
+				<div class="menu-immersion-header-menu-container"><ul id="2" class="pagelayer-wp_menu-ul"><li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-14 current_page_item menu-item-16"><a href="https://andlesgames.ru/" aria-current="page"><span class="pagelayer-nav-menu-title">Home</span></a><div class="pagelayer-mega-menu pagelayer-mega-editor-16"></div></li>
+<li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="https://andlesgames.ru/blog/"><span class="pagelayer-nav-menu-title">Blog</span></a><div class="pagelayer-mega-menu pagelayer-mega-editor-17"></div></li>
+<li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="https://andlesgames.ru/contact/"><span class="pagelayer-nav-menu-title">Contact</span></a><div class="pagelayer-mega-menu pagelayer-mega-editor-18"></div></li>
+<li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><a href="https://andlesgames.ru/about-2/"><span class="pagelayer-nav-menu-title">About</span></a><div class="pagelayer-mega-menu pagelayer-mega-editor-19"></div></li>
+</ul></div>
+			</div>
+		</div></div>
+</div></div>
+</div></div>
+
+	</header>
+	<main id="primary" class="site-main">
+
+		
+<article id="post-14" class="post-14 page type-page status-publish hentry">
+	<header class="entry-header">
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content">
+		<div pagelayer-id="mz87338" class="p-mz87338 pagelayer-row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="mz87338">.p-mz87338 .pagelayer-col-holder{padding: 10px}
+.p-mz87338 > .pagelayer-background-overlay{background-color: #9ca9b0;opacity: 0.2;-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-mz87338 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-mz87338 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-mz87338 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-mz87338 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+.p-mz87338{background-image: url("https://andlesgames.ru/wp-content/uploads/2021/07/banner.jpg");background-position-x: center;background-position-y: center;background-repeat: no-repeat;background-size: cover;padding-top: 150px; padding-right: 0px; padding-bottom: 150px; padding-left: 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-mz87338{padding-top: 100px; padding-right: 0px; padding-bottom: 100px; padding-left: 0px}}
+@media (max-width: 360px){.p-mz87338{padding-top: 80px; padding-right: 0px; padding-bottom: 80px; padding-left: 0px}}
+</style>
+			
+			
+			
+			<div class="pagelayer-background-overlay"></div>
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="aoy6039" class="p-aoy6039 pagelayer-col">
+<style pagelayer-style-id="aoy6039">.p-aoy6039 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.p-aoy6039 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="mvx2211" class="p-mvx2211 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="mvx2211">.p-mvx2211{text-align: center;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+.p-mvx2211 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 65px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 20px !important; word-spacing: px !important}
+.p-mvx2211 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 65px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 20px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-mvx2211 .pagelayer-heading-holder *{font-family:  !important; font-size: 30px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-mvx2211 .pagelayer-heading-holder{font-family:  !important; font-size: 30px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-mvx2211 .pagelayer-heading-holder *{font-family:  !important; font-size: 25px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: 5px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-mvx2211 .pagelayer-heading-holder{font-family:  !important; font-size: 25px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: 5px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+
+
+
+jose aragones</div>
+		
+			</div>
+<div pagelayer-id="dzs5996" class="p-dzs5996 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="dzs5996">.p-dzs5996{padding-top: 3%; padding-right: 25%; padding-bottom: 0%; padding-left: 25%;-webkit-animation-delay: 700ms; animation-delay: 700ms}
+@media (max-width: 768px) and (min-width: 361px){.p-dzs5996{padding-top: 0%; padding-right: 15%; padding-bottom: 0%; padding-left: 15%}}
+@media (max-width: 360px){.p-dzs5996{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-text-holder">
+
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:1.8;text-align:center;color:#000">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi. Vestibulum ac elementum massa</p></div></div>
+<div pagelayer-id="h2d8377" class="p-h2d8377 pagelayer-social_grp fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="h2d8377">.p-h2d8377{text-align: center;-webkit-animation-delay: 800ms; animation-delay: 800ms}
+.p-h2d8377 > div{display: inline-block}
+.p-h2d8377 .pagelayer-social{padding: 50px}
+@media (max-width: 768px) and (min-width: 361px){.p-h2d8377 .pagelayer-social{padding: 35px}}
+@media (max-width: 360px){.p-h2d8377 .pagelayer-social{padding: 24px}}
+.p-h2d8377 .pagelayer-social-fa{font-size: 16px;color: #000000 !important;-webkit-transition: all 400ms; transition: all 400ms}
+.p-h2d8377 .pagelayer-icon-holder{font-size: 16px;-webkit-transition: all 400ms; transition: all 400ms}
+</style>
+<div pagelayer-id="whr7208" class="p-whr7208 pagelayer-social">
+<div class="pagelayer-icon-holder pagelayer-facebook-f" data-icon="fab fa-facebook-f">
+					<a class="pagelayer-ele-link" href="https://www.facebook.com/sitepad">
+						<i class="pagelayer-social-fa fab fa-facebook-f"></i>
+					</a>
+				</div></div>
+<div pagelayer-id="mjv2127" class="p-mjv2127 pagelayer-social">
+<div class="pagelayer-icon-holder pagelayer-twitter" data-icon="fab fa-twitter">
+					<a class="pagelayer-ele-link" href="https://twitter.com/sitepad">
+						<i class="pagelayer-social-fa fab fa-twitter"></i>
+					</a>
+				</div></div>
+<div pagelayer-id="hch5519" class="p-hch5519 pagelayer-social">
+<div class="pagelayer-icon-holder pagelayer-instagram" data-icon="fab fa-instagram">
+					<a class="pagelayer-ele-link" href="https://www.instagram.com/sitepad">
+						<i class="pagelayer-social-fa fab fa-instagram"></i>
+					</a>
+				</div></div>
+<div pagelayer-id="th59060" class="p-th59060 pagelayer-social">
+<div class="pagelayer-icon-holder pagelayer-pinterest-p" data-icon="fab fa-pinterest-p">
+					<a class="pagelayer-ele-link" href="https://www.instagram.com/sitepad">
+						<i class="pagelayer-social-fa fab fa-pinterest-p"></i>
+					</a>
+				</div></div>
+</div>
+</div></div>
+</div></div>
+<div pagelayer-id="d7k6885" class="p-d7k6885 pagelayer-row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="d7k6885">.p-d7k6885 .pagelayer-col-holder{padding: 10px}
+.p-d7k6885 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-d7k6885 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-d7k6885 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-d7k6885 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-d7k6885 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+.p-d7k6885{padding-top: 80px; padding-right: 0px; padding-bottom: 80px; padding-left: 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-d7k6885{padding-top: 50px; padding-right: 0px; padding-bottom: 50px; padding-left: 0px}}
+@media (max-width: 360px){.p-d7k6885{padding-top: 40px; padding-right: 0px; padding-bottom: 40px; padding-left: 0px}}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="4j26212" class="p-4j26212 pagelayer-col">
+<style pagelayer-style-id="4j26212">.p-4j26212 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.p-4j26212 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="o756466" class="p-o756466 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="o756466">.p-o756466{text-align: center;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+.p-o756466 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 30px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+.p-o756466 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 30px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-o756466 .pagelayer-heading-holder *{font-family:  !important; font-size: 25px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-o756466 .pagelayer-heading-holder{font-family:  !important; font-size: 25px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-o756466 .pagelayer-heading-holder *{font-family:  !important; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-o756466 .pagelayer-heading-holder{font-family:  !important; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+
+blogg</div>
+		
+			</div>
+<div pagelayer-id="gas5284" class="p-gas5284 pagelayer-divider fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="gas5284">.p-gas5284 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #fcdca9;border-top-width: 2px;width: 7%}
+.p-gas5284 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+.p-gas5284{margin-top: -15px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;-webkit-animation-delay: 700ms; animation-delay: 700ms}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="et82483" class="p-et82483 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="et82483">.p-et82483{padding-top: 0%; padding-right: 24%; padding-bottom: 0%; padding-left: 24%;-webkit-animation-delay: 800ms; animation-delay: 800ms}
+@media (max-width: 768px) and (min-width: 361px){.p-et82483{padding-top: 0%; padding-right: 15%; padding-bottom: 0%; padding-left: 15%}}
+@media (max-width: 360px){.p-et82483{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-text-holder">
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:1.8;text-align:center;color:#5d5d5d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi. Vestibulum ac elementum massa. In rutrum quis risus quis sollicitudin.</p></div></div>
+<div pagelayer-id="bai7111" class="p-bai7111 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="bai7111">.p-bai7111{text-align: center;padding-top: 50px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+.p-bai7111 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 18px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+.p-bai7111 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 18px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-bai7111 .pagelayer-heading-holder *{font-family:  !important; font-size: 16px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-bai7111 .pagelayer-heading-holder{font-family:  !important; font-size: 16px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-bai7111 .pagelayer-heading-holder *{font-family:  !important; font-size: 14px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-bai7111 .pagelayer-heading-holder{font-family:  !important; font-size: 14px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-bai7111{padding-top: 30px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+@media (max-width: 360px){.p-bai7111{padding-top: 25px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+
+tips &amp; tricks</div>
+		
+			</div>
+<div pagelayer-id="5d97017" class="p-5d97017 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="5d97017">.p-5d97017{text-align: center;-webkit-animation-delay: 700ms; animation-delay: 700ms}
+.p-5d97017 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+.p-5d97017 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-5d97017 .pagelayer-heading-holder *{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-5d97017 .pagelayer-heading-holder{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-5d97017 .pagelayer-heading-holder *{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-5d97017 .pagelayer-heading-holder{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+how to take good pictures</div>
+		
+			</div>
+<div pagelayer-id="l772503" class="p-l772503 pagelayer-divider fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="l772503">.p-l772503 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #fcdca9;border-top-width: 2px;width: 10%}
+.p-l772503 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+.p-l772503{margin-top: -15px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;-webkit-animation-delay: 800ms; animation-delay: 800ms}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="qrz9191" class="p-qrz9191 pagelayer-image fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="qrz9191">.p-qrz9191 .pagelayer-image-holder{text-align: center}
+.p-qrz9191 .pagelayer-image-holder .pagelayer-image-overlay-content{text-align: center}
+.p-qrz9191 .pagelayer-img{-webkit-transition: all 400ms; transition: all 400ms}
+.p-qrz9191 .pagelayer-image-caption{color: #0986c0}
+.p-qrz9191{-webkit-animation-delay: 900ms; animation-delay: 900ms}
+</style><div class="pagelayer-image-holder pagelayer-anim-par">
+			
+				<img class="pagelayer-img pagelayer-animation-{{anim_hover}}" src="https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg" title="image3" alt="image3" srcset="https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg, https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg 1x, " />
+				
+			
+		</div>
+		</div>
+<div pagelayer-id="96m8424" class="p-96m8424 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="96m8424">.p-96m8424{padding-top: 0%; padding-right: 14%; padding-bottom: 0%; padding-left: 14%;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+@media (max-width: 360px){.p-96m8424{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-text-holder">
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:1.8;text-align:center;color:#5d5d5d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi. Vestibulum ac elementum massa. In rutrum quis risus quis sollicitudin.</p></div></div>
+<div pagelayer-id="8h32171" class="p-8h32171 pagelayer-divider">
+<style pagelayer-style-id="8h32171">.p-8h32171 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #999999;border-top-width: 1px;width: 100%}
+.p-8h32171 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="x0r6471" class="p-x0r6471 pagelayer-inner_row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="x0r6471">.p-x0r6471 .pagelayer-col-holder{padding: 10px}
+.p-x0r6471 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-x0r6471 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-x0r6471 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-x0r6471 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-x0r6471 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="e477851" class="p-e477851 pagelayer-col fadeInLeft pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="e477851">.p-e477851 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="e477851"]{width: 50%}
+.p-e477851 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-e477851{-webkit-animation-delay: 700ms; animation-delay: 700ms}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="0hl3508" class="p-0hl3508 pagelayer-heading">
+<style pagelayer-style-id="0hl3508">.p-0hl3508 .pagelayer-heading-holder *{color:#303030;font-family: Roboto !important; font-size: 14px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+.p-0hl3508 .pagelayer-heading-holder{color:#303030;font-family: Roboto !important; font-size: 14px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+36 views</div>
+		
+			</div>
+<div pagelayer-id="xkv9272" class="p-xkv9272 pagelayer-btn">
+<style pagelayer-style-id="xkv9272">.p-xkv9272 .pagelayer-btn-text{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important}
+.p-xkv9272 .pagelayer-btn-holder{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important;background-color: rgba(0,0,0,0.00);color: #303030;-webkit-transition: all 400ms !important; transition: all 400ms !important;border-color: #fcdca9}
+@media (max-width: 768px) and (min-width: 361px){.p-xkv9272 .pagelayer-btn-text{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-xkv9272 .pagelayer-btn-holder{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-xkv9272 .pagelayer-btn-text{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-xkv9272 .pagelayer-btn-holder{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-xkv9272{text-align: left}
+.p-xkv9272 .pagelayer-btn-anim-thin{background-color: unset !important;border-style: unset !important}
+.p-xkv9272 .pagelayer-btn-anim-thin::before{background-color: rgba(0,0,0,0.00)}
+.p-xkv9272 .pagelayer-btn-anim-thin::after{background-color: rgba(0,0,0,0.00)}
+.p-xkv9272 .pagelayer-btn-holder, .p-xkv9272 .pagelayer-btn-anim-thin:after, .p-xkv9272 .pagelayer-btn-anim-thin:before{border-style: solid;border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}
+.p-xkv9272 .pagelayer-btn-holder, .p-xkv9272 .pagelayer-btn-anim-glow:before{border-radius: 0px 0px 0px 0px; -webkit-border-radius:  0px 0px 0px 0px;-moz-border-radius: 0px 0px 0px 0px}
+</style><a class="pagelayer-btn-holder pagelayer-ele-link pagelayer-btn-custom pagelayer-btn-mini {{icon_position}}" href="#">
+					
+					<span class="pagelayer-btn-text">Read more</span>
+					
+				</a></div>
+</div></div>
+<div pagelayer-id="67j9912" class="p-67j9912 pagelayer-col fadeInRight pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="67j9912">.p-67j9912 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="67j9912"]{width: 50%}
+.p-67j9912 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-67j9912{-webkit-animation-delay: 800ms; animation-delay: 800ms}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="ew47647" class="p-ew47647 pagelayer-heading" align="right">
+<style pagelayer-style-id="ew47647">.p-ew47647{text-align: right}
+.p-ew47647 .pagelayer-heading-holder *{color:#303030;font-family: Roboto !important; font-size: 15px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+.p-ew47647 .pagelayer-heading-holder{color:#303030;font-family: Roboto !important; font-size: 15px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+Write a comment</div>
+		
+			</div>
+<div pagelayer-id="kmx8824" class="p-kmx8824 pagelayer-iconbox">
+<style pagelayer-style-id="kmx8824">.p-kmx8824 .pagelayer-service-icon i{color:#fe0000;-webkit-transition: all 400ms; transition: all 400ms}
+.p-kmx8824 .pagelayer-service-icon{font-size:18px}
+@media (max-width: 768px) and (min-width: 361px){.p-kmx8824 .pagelayer-service-icon{font-size:16px}}
+@media (max-width: 360px){.p-kmx8824 .pagelayer-service-icon{font-size:14px}}
+.p-kmx8824 .pagelayer-service-heading{text-align:right;padding-top:0px; padding-right:10px; padding-bottom:10px; padding-left:0px;color:#303030;font-family: Cabin; font-size: 22px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important;-webkit-transition: all 400ms; transition: all 400ms}
+@media (max-width: 768px) and (min-width: 361px){.p-kmx8824 .pagelayer-service-heading{font-family: ; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-kmx8824 .pagelayer-service-heading{font-family: ; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-kmx8824 .pagelayer-service-details{text-align:center}
+.p-kmx8824 .pagelayer-service-btn{-webkit-transition: all 400ms; transition: all 400ms}
+</style><div class="pagelayer-service-container pagelayer-service-align-right pagelayer-service-vertical-top">
+			<div class="pagelayer-service-icon pagelayer-service-default">
+				<i class="fas fa-heart pagelayer-icon-{{service_icon_shape_type}} pagelayer-animation-{{anim_hover}}" aria-hidden="true"></i>
+			</div>
+			<div class="pagelayer-service-details">
+				
+					<div class="pagelayer-service-heading">50</div>
+				
+				<div class="pagelayer-service-text">
+
+
+
+
+</div>
+				
+			</div>
+			 
+		</div></div>
+</div></div>
+</div></div>
+</div></div>
+</div></div>
+<div pagelayer-id="rfa9315" class="p-rfa9315 pagelayer-row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="rfa9315">.p-rfa9315 .pagelayer-col-holder{padding: 10px}
+.p-rfa9315 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-rfa9315 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-rfa9315 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-rfa9315 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-rfa9315 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+.p-rfa9315{padding-top: 80px; padding-right: 0px; padding-bottom: 80px; padding-left: 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-rfa9315{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+@media (max-width: 360px){.p-rfa9315{padding-top: 40px; padding-right: 0px; padding-bottom: 40px; padding-left: 0px}}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="hvo9508" class="p-hvo9508 pagelayer-col">
+<style pagelayer-style-id="hvo9508">.p-hvo9508 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.p-hvo9508 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="3oy4607" class="p-3oy4607 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="3oy4607">.p-3oy4607{text-align: center;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+.p-3oy4607 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 18px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+.p-3oy4607 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 18px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-3oy4607 .pagelayer-heading-holder *{font-family:  !important; font-size: 16px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-3oy4607 .pagelayer-heading-holder{font-family:  !important; font-size: 16px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-3oy4607 .pagelayer-heading-holder *{font-family:  !important; font-size: 14px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-3oy4607 .pagelayer-heading-holder{font-family:  !important; font-size: 14px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+architecture</div>
+		
+			</div>
+<div pagelayer-id="v955329" class="p-v955329 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="v955329">.p-v955329{text-align: center;-webkit-animation-delay: 700ms; animation-delay: 700ms}
+.p-v955329 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+.p-v955329 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-v955329 .pagelayer-heading-holder *{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-v955329 .pagelayer-heading-holder{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-v955329 .pagelayer-heading-holder *{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-v955329 .pagelayer-heading-holder{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+Great building around</div>
+		
+			</div>
+<div pagelayer-id="4u26974" class="p-4u26974 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="4u26974">.p-4u26974{text-align: center;-webkit-animation-delay: 800ms; animation-delay: 800ms}
+.p-4u26974 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+.p-4u26974 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-4u26974 .pagelayer-heading-holder *{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-4u26974 .pagelayer-heading-holder{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-4u26974 .pagelayer-heading-holder *{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-4u26974 .pagelayer-heading-holder{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+the city</div>
+		
+			</div>
+<div pagelayer-id="k6x3858" class="p-k6x3858 pagelayer-divider fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="k6x3858">.p-k6x3858 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #fcdca9;border-top-width: 2px;width: 10%}
+.p-k6x3858 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+.p-k6x3858{margin-top: -15px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;-webkit-animation-delay: 900ms; animation-delay: 900ms}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="dvp5779" class="p-dvp5779 pagelayer-image fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="dvp5779">.p-dvp5779 .pagelayer-image-holder{text-align: center}
+.p-dvp5779 .pagelayer-image-holder .pagelayer-image-overlay-content{text-align: center}
+.p-dvp5779 .pagelayer-img{-webkit-transition: all 400ms; transition: all 400ms}
+.p-dvp5779 .pagelayer-image-caption{color: #0986c0}
+.p-dvp5779{-webkit-animation-delay: 1000ms; animation-delay: 1000ms}
+</style><div class="pagelayer-image-holder pagelayer-anim-par">
+			
+				<img class="pagelayer-img pagelayer-animation-{{anim_hover}}" src="https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg" title="image3" alt="image3" srcset="https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg, https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg 1x, " />
+				
+			
+		</div>
+		</div>
+<div pagelayer-id="r186514" class="p-r186514 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="r186514">.p-r186514{padding-top: 0%; padding-right: 14%; padding-bottom: 0%; padding-left: 14%;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+@media (max-width: 360px){.p-r186514{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-text-holder">
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:1.8;text-align:center;color:#5d5d5d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi. Vestibulum ac elementum massa. In rutrum quis risus quis sollicitudin.</p></div></div>
+<div pagelayer-id="bs33818" class="p-bs33818 pagelayer-divider">
+<style pagelayer-style-id="bs33818">.p-bs33818 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #999999;border-top-width: 1px;width: 100%}
+.p-bs33818 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="dt01851" class="p-dt01851 pagelayer-inner_row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="dt01851">.p-dt01851 .pagelayer-col-holder{padding: 10px}
+.p-dt01851 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-dt01851 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-dt01851 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-dt01851 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-dt01851 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="bpj6456" class="p-bpj6456 pagelayer-col fadeInLeft pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="bpj6456">.p-bpj6456 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="bpj6456"]{width: 50%}
+.p-bpj6456 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-bpj6456{-webkit-animation-delay: 700ms; animation-delay: 700ms}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="e039324" class="p-e039324 pagelayer-heading">
+<style pagelayer-style-id="e039324">.p-e039324 .pagelayer-heading-holder *{color:#303030;font-family: Roboto !important; font-size: 14px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+.p-e039324 .pagelayer-heading-holder{color:#303030;font-family: Roboto !important; font-size: 14px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+36 views</div>
+		
+			</div>
+<div pagelayer-id="qli6419" class="p-qli6419 pagelayer-btn">
+<style pagelayer-style-id="qli6419">.p-qli6419 .pagelayer-btn-text{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important}
+.p-qli6419 .pagelayer-btn-holder{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important;background-color: rgba(0,0,0,0.00);color: #303030;-webkit-transition: all 400ms !important; transition: all 400ms !important;border-color: #fcdca9}
+@media (max-width: 768px) and (min-width: 361px){.p-qli6419 .pagelayer-btn-text{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-qli6419 .pagelayer-btn-holder{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-qli6419 .pagelayer-btn-text{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-qli6419 .pagelayer-btn-holder{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-qli6419{text-align: left}
+.p-qli6419 .pagelayer-btn-anim-thin{background-color: unset !important;border-style: unset !important}
+.p-qli6419 .pagelayer-btn-anim-thin::before{background-color: rgba(0,0,0,0.00)}
+.p-qli6419 .pagelayer-btn-anim-thin::after{background-color: rgba(0,0,0,0.00)}
+.p-qli6419 .pagelayer-btn-holder, .p-qli6419 .pagelayer-btn-anim-thin:after, .p-qli6419 .pagelayer-btn-anim-thin:before{border-style: solid;border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}
+.p-qli6419 .pagelayer-btn-holder, .p-qli6419 .pagelayer-btn-anim-glow:before{border-radius: 0px 0px 0px 0px; -webkit-border-radius:  0px 0px 0px 0px;-moz-border-radius: 0px 0px 0px 0px}
+</style><a class="pagelayer-btn-holder pagelayer-ele-link pagelayer-btn-custom pagelayer-btn-mini {{icon_position}}" href="#">
+					
+					<span class="pagelayer-btn-text">Read more</span>
+					
+				</a></div>
+</div></div>
+<div pagelayer-id="jpc6193" class="p-jpc6193 pagelayer-col fadeInRight pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="jpc6193">.p-jpc6193 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="jpc6193"]{width: 50%}
+.p-jpc6193 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-jpc6193{-webkit-animation-delay: 800ms; animation-delay: 800ms}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="1mm4240" class="p-1mm4240 pagelayer-heading" align="right">
+<style pagelayer-style-id="1mm4240">.p-1mm4240{text-align: right}
+.p-1mm4240 .pagelayer-heading-holder *{color:#303030;font-family: Roboto !important; font-size: 15px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+.p-1mm4240 .pagelayer-heading-holder{color:#303030;font-family: Roboto !important; font-size: 15px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+Write a comment</div>
+		
+			</div>
+<div pagelayer-id="zei1896" class="p-zei1896 pagelayer-iconbox">
+<style pagelayer-style-id="zei1896">.p-zei1896 .pagelayer-service-icon i{color:#fe0000;-webkit-transition: all 400ms; transition: all 400ms}
+.p-zei1896 .pagelayer-service-icon{font-size:18px}
+@media (max-width: 768px) and (min-width: 361px){.p-zei1896 .pagelayer-service-icon{font-size:16px}}
+@media (max-width: 360px){.p-zei1896 .pagelayer-service-icon{font-size:14px}}
+.p-zei1896 .pagelayer-service-heading{text-align:right;padding-top:0px; padding-right:10px; padding-bottom:10px; padding-left:0px;color:#303030;font-family: Cabin; font-size: 22px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important;-webkit-transition: all 400ms; transition: all 400ms}
+@media (max-width: 768px) and (min-width: 361px){.p-zei1896 .pagelayer-service-heading{font-family: ; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-zei1896 .pagelayer-service-heading{font-family: ; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-zei1896 .pagelayer-service-details{text-align:center}
+.p-zei1896 .pagelayer-service-btn{-webkit-transition: all 400ms; transition: all 400ms}
+</style><div class="pagelayer-service-container pagelayer-service-align-right pagelayer-service-vertical-top">
+			<div class="pagelayer-service-icon pagelayer-service-default">
+				<i class="fas fa-heart pagelayer-icon-{{service_icon_shape_type}} pagelayer-animation-{{anim_hover}}" aria-hidden="true"></i>
+			</div>
+			<div class="pagelayer-service-details">
+				
+					<div class="pagelayer-service-heading">50</div>
+				
+				<div class="pagelayer-service-text">
+
+
+
+
+</div>
+				
+			</div>
+			 
+		</div></div>
+</div></div>
+</div></div>
+</div></div>
+</div></div>
+<div pagelayer-id="84s3832" class="p-84s3832 pagelayer-row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="84s3832">.p-84s3832 .pagelayer-col-holder{padding: 10px}
+.p-84s3832 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-84s3832 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-84s3832 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-84s3832 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-84s3832 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+.p-84s3832{padding-top: 80px; padding-right: 0px; padding-bottom: 80px; padding-left: 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-84s3832{padding-top: 50px; padding-right: 0px; padding-bottom: 50px; padding-left: 0px}}
+@media (max-width: 360px){.p-84s3832{padding-top: 40px; padding-right: 0px; padding-bottom: 40px; padding-left: 0px}}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="lwo7069" class="p-lwo7069 pagelayer-col">
+<style pagelayer-style-id="lwo7069">.p-lwo7069 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.p-lwo7069 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="oyv4666" class="p-oyv4666 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="oyv4666">.p-oyv4666{text-align: center;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+.p-oyv4666 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 18px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+.p-oyv4666 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 18px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-oyv4666 .pagelayer-heading-holder *{font-family:  !important; font-size: 16px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-oyv4666 .pagelayer-heading-holder{font-family:  !important; font-size: 16px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-oyv4666 .pagelayer-heading-holder *{font-family:  !important; font-size: 14px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-oyv4666 .pagelayer-heading-holder{font-family:  !important; font-size: 14px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+lifestyle</div>
+		
+			</div>
+<div pagelayer-id="v5c7744" class="p-v5c7744 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="v5c7744">.p-v5c7744{text-align: center;-webkit-animation-delay: 700ms; animation-delay: 700ms}
+.p-v5c7744 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+.p-v5c7744 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-v5c7744 .pagelayer-heading-holder *{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-v5c7744 .pagelayer-heading-holder{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-v5c7744 .pagelayer-heading-holder *{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-v5c7744 .pagelayer-heading-holder{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+working from home</div>
+		
+			</div>
+<div pagelayer-id="j9c4672" class="p-j9c4672 pagelayer-divider fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="j9c4672">.p-j9c4672 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #fcdca9;border-top-width: 2px;width: 10%}
+.p-j9c4672 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+.p-j9c4672{margin-top: -15px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;-webkit-animation-delay: 800ms; animation-delay: 800ms}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="lj68025" class="p-lj68025 pagelayer-image fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="lj68025">.p-lj68025 .pagelayer-image-holder{text-align: center}
+.p-lj68025 .pagelayer-image-holder .pagelayer-image-overlay-content{text-align: center}
+.p-lj68025 .pagelayer-img{-webkit-transition: all 400ms; transition: all 400ms}
+.p-lj68025 .pagelayer-image-caption{color: #0986c0}
+.p-lj68025{-webkit-animation-delay: 1000ms; animation-delay: 1000ms}
+</style><div class="pagelayer-image-holder pagelayer-anim-par">
+			
+				<img class="pagelayer-img pagelayer-animation-{{anim_hover}}" src="https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg" title="image3" alt="image3" srcset="https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg, https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg 1x, " />
+				
+			
+		</div>
+		</div>
+<div pagelayer-id="0rt7287" class="p-0rt7287 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="0rt7287">.p-0rt7287{padding-top: 0%; padding-right: 14%; padding-bottom: 0%; padding-left: 14%;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+@media (max-width: 360px){.p-0rt7287{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-text-holder">
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:1.8;text-align:center;color:#5d5d5d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi. Vestibulum ac elementum massa. In rutrum quis risus quis sollicitudin.</p></div></div>
+<div pagelayer-id="8157860" class="p-8157860 pagelayer-divider">
+<style pagelayer-style-id="8157860">.p-8157860 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #999999;border-top-width: 1px;width: 100%}
+.p-8157860 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="i0u5353" class="p-i0u5353 pagelayer-inner_row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="i0u5353">.p-i0u5353 .pagelayer-col-holder{padding: 10px}
+.p-i0u5353 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-i0u5353 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-i0u5353 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-i0u5353 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-i0u5353 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="mhd1460" class="p-mhd1460 pagelayer-col fadeInLeft pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="mhd1460">.p-mhd1460 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="mhd1460"]{width: 50%}
+.p-mhd1460 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-mhd1460{-webkit-animation-delay: 600ms; animation-delay: 600ms}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="15w5801" class="p-15w5801 pagelayer-heading">
+<style pagelayer-style-id="15w5801">.p-15w5801 .pagelayer-heading-holder *{color:#303030;font-family: Roboto !important; font-size: 14px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+.p-15w5801 .pagelayer-heading-holder{color:#303030;font-family: Roboto !important; font-size: 14px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+36 views</div>
+		
+			</div>
+<div pagelayer-id="55k3196" class="p-55k3196 pagelayer-btn">
+<style pagelayer-style-id="55k3196">.p-55k3196 .pagelayer-btn-text{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important}
+.p-55k3196 .pagelayer-btn-holder{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important;background-color: rgba(0,0,0,0.00);color: #303030;-webkit-transition: all 400ms !important; transition: all 400ms !important;border-color: #fcdca9}
+@media (max-width: 768px) and (min-width: 361px){.p-55k3196 .pagelayer-btn-text{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-55k3196 .pagelayer-btn-holder{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-55k3196 .pagelayer-btn-text{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-55k3196 .pagelayer-btn-holder{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-55k3196{text-align: left}
+.p-55k3196 .pagelayer-btn-anim-thin{background-color: unset !important;border-style: unset !important}
+.p-55k3196 .pagelayer-btn-anim-thin::before{background-color: rgba(0,0,0,0.00)}
+.p-55k3196 .pagelayer-btn-anim-thin::after{background-color: rgba(0,0,0,0.00)}
+.p-55k3196 .pagelayer-btn-holder, .p-55k3196 .pagelayer-btn-anim-thin:after, .p-55k3196 .pagelayer-btn-anim-thin:before{border-style: solid;border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}
+.p-55k3196 .pagelayer-btn-holder, .p-55k3196 .pagelayer-btn-anim-glow:before{border-radius: 0px 0px 0px 0px; -webkit-border-radius:  0px 0px 0px 0px;-moz-border-radius: 0px 0px 0px 0px}
+</style><a class="pagelayer-btn-holder pagelayer-ele-link pagelayer-btn-custom pagelayer-btn-mini {{icon_position}}" href="#">
+					
+					<span class="pagelayer-btn-text">Read more</span>
+					
+				</a></div>
+</div></div>
+<div pagelayer-id="4gw4882" class="p-4gw4882 pagelayer-col fadeInRight pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="4gw4882">.p-4gw4882 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="4gw4882"]{width: 50%}
+.p-4gw4882 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-4gw4882{-webkit-animation-delay: 700ms; animation-delay: 700ms}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="6ou8783" class="p-6ou8783 pagelayer-heading" align="right">
+<style pagelayer-style-id="6ou8783">.p-6ou8783{text-align: right}
+.p-6ou8783 .pagelayer-heading-holder *{color:#303030;font-family: Roboto !important; font-size: 15px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+.p-6ou8783 .pagelayer-heading-holder{color:#303030;font-family: Roboto !important; font-size: 15px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+Write a comment</div>
+		
+			</div>
+<div pagelayer-id="0wg5517" class="p-0wg5517 pagelayer-iconbox">
+<style pagelayer-style-id="0wg5517">.p-0wg5517 .pagelayer-service-icon i{color:#fe0000;-webkit-transition: all 400ms; transition: all 400ms}
+.p-0wg5517 .pagelayer-service-icon{font-size:18px}
+@media (max-width: 768px) and (min-width: 361px){.p-0wg5517 .pagelayer-service-icon{font-size:16px}}
+@media (max-width: 360px){.p-0wg5517 .pagelayer-service-icon{font-size:14px}}
+.p-0wg5517 .pagelayer-service-heading{text-align:right;padding-top:0px; padding-right:10px; padding-bottom:10px; padding-left:0px;color:#303030;font-family: Cabin; font-size: 22px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important;-webkit-transition: all 400ms; transition: all 400ms}
+@media (max-width: 768px) and (min-width: 361px){.p-0wg5517 .pagelayer-service-heading{font-family: ; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-0wg5517 .pagelayer-service-heading{font-family: ; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-0wg5517 .pagelayer-service-details{text-align:center}
+.p-0wg5517 .pagelayer-service-btn{-webkit-transition: all 400ms; transition: all 400ms}
+</style><div class="pagelayer-service-container pagelayer-service-align-right pagelayer-service-vertical-top">
+			<div class="pagelayer-service-icon pagelayer-service-default">
+				<i class="fas fa-heart pagelayer-icon-{{service_icon_shape_type}} pagelayer-animation-{{anim_hover}}" aria-hidden="true"></i>
+			</div>
+			<div class="pagelayer-service-details">
+				
+					<div class="pagelayer-service-heading">50</div>
+				
+				<div class="pagelayer-service-text">
+
+
+
+
+</div>
+				
+			</div>
+			 
+		</div></div>
+</div></div>
+</div></div>
+</div></div>
+</div></div>
+<div pagelayer-id="gpq7614" class="p-gpq7614 pagelayer-row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="gpq7614">.p-gpq7614 .pagelayer-col-holder{padding: 10px}
+.p-gpq7614 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-gpq7614 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-gpq7614 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-gpq7614 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-gpq7614 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+.p-gpq7614{padding-top: 80px; padding-right: 0px; padding-bottom: 80px; padding-left: 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-gpq7614{padding-top: 50px; padding-right: 0px; padding-bottom: 50px; padding-left: 0px}}
+@media (max-width: 360px){.p-gpq7614{padding-top: 40px; padding-right: 0px; padding-bottom: 40px; padding-left: 0px}}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="tk26924" class="p-tk26924 pagelayer-col">
+<style pagelayer-style-id="tk26924">.p-tk26924 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.p-tk26924 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="jlc4504" class="p-jlc4504 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="jlc4504">.p-jlc4504{text-align: center;padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+.p-jlc4504 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 18px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+.p-jlc4504 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 18px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-jlc4504 .pagelayer-heading-holder *{font-family:  !important; font-size: 16px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-jlc4504 .pagelayer-heading-holder{font-family:  !important; font-size: 16px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-jlc4504 .pagelayer-heading-holder *{font-family:  !important; font-size: 14px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-jlc4504 .pagelayer-heading-holder{font-family:  !important; font-size: 14px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+travel</div>
+		
+			</div>
+<div pagelayer-id="eyi4128" class="p-eyi4128 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="eyi4128">.p-eyi4128{text-align: center;-webkit-animation-delay: 700ms; animation-delay: 700ms}
+.p-eyi4128 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+.p-eyi4128 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 24px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-eyi4128 .pagelayer-heading-holder *{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-eyi4128 .pagelayer-heading-holder{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-eyi4128 .pagelayer-heading-holder *{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-eyi4128 .pagelayer-heading-holder{font-family:  !important; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+the places i love</div>
+		
+			</div>
+<div pagelayer-id="9394842" class="p-9394842 pagelayer-divider fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="9394842">.p-9394842 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #fcdca9;border-top-width: 2px;width: 10%}
+.p-9394842 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+.p-9394842{margin-top: -15px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;-webkit-animation-delay: 800ms; animation-delay: 800ms}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="fv42945" class="p-fv42945 pagelayer-image fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="fv42945">.p-fv42945 .pagelayer-image-holder{text-align: center}
+.p-fv42945 .pagelayer-image-holder .pagelayer-image-overlay-content{text-align: center}
+.p-fv42945 .pagelayer-img{-webkit-transition: all 400ms; transition: all 400ms}
+.p-fv42945 .pagelayer-image-caption{color: #0986c0}
+.p-fv42945{-webkit-animation-delay: 900ms; animation-delay: 900ms}
+</style><div class="pagelayer-image-holder pagelayer-anim-par">
+			
+				<img class="pagelayer-img pagelayer-animation-{{anim_hover}}" src="https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg" title="image3" alt="image3" srcset="https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg, https://andlesgames.ru/wp-content/uploads/2021/07/image3.jpg 1x, " />
+				
+			
+		</div>
+		</div>
+<div pagelayer-id="h7d7657" class="p-h7d7657 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="h7d7657">.p-h7d7657{padding-top: 0%; padding-right: 14%; padding-bottom: 0%; padding-left: 14%;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+@media (max-width: 360px){.p-h7d7657{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-text-holder">
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:1.8;text-align:center;color:#5d5d5d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi. Vestibulum ac elementum massa. In rutrum quis risus quis sollicitudin.</p></div></div>
+<div pagelayer-id="uvc7048" class="p-uvc7048 pagelayer-divider">
+<style pagelayer-style-id="uvc7048">.p-uvc7048 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #999999;border-top-width: 1px;width: 100%}
+.p-uvc7048 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="vwj2805" class="p-vwj2805 pagelayer-inner_row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="vwj2805">.p-vwj2805 .pagelayer-col-holder{padding: 10px}
+.p-vwj2805 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-vwj2805 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-vwj2805 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-vwj2805 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-vwj2805 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="nft8819" class="p-nft8819 pagelayer-col fadeInLeft pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="nft8819">.p-nft8819 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="nft8819"]{width: 50%}
+.p-nft8819 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-nft8819{-webkit-animation-delay: 700ms; animation-delay: 700ms}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="i371975" class="p-i371975 pagelayer-heading">
+<style pagelayer-style-id="i371975">.p-i371975 .pagelayer-heading-holder *{color:#303030;font-family: Roboto !important; font-size: 14px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+.p-i371975 .pagelayer-heading-holder{color:#303030;font-family: Roboto !important; font-size: 14px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+36 views</div>
+		
+			</div>
+<div pagelayer-id="1h64827" class="p-1h64827 pagelayer-btn">
+<style pagelayer-style-id="1h64827">.p-1h64827 .pagelayer-btn-text{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important}
+.p-1h64827 .pagelayer-btn-holder{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important;background-color: rgba(0,0,0,0.00);color: #303030;-webkit-transition: all 400ms !important; transition: all 400ms !important;border-color: #fcdca9}
+@media (max-width: 768px) and (min-width: 361px){.p-1h64827 .pagelayer-btn-text{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-1h64827 .pagelayer-btn-holder{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-1h64827 .pagelayer-btn-text{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-1h64827 .pagelayer-btn-holder{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-1h64827{text-align: left}
+.p-1h64827 .pagelayer-btn-anim-thin{background-color: unset !important;border-style: unset !important}
+.p-1h64827 .pagelayer-btn-anim-thin::before{background-color: rgba(0,0,0,0.00)}
+.p-1h64827 .pagelayer-btn-anim-thin::after{background-color: rgba(0,0,0,0.00)}
+.p-1h64827 .pagelayer-btn-holder, .p-1h64827 .pagelayer-btn-anim-thin:after, .p-1h64827 .pagelayer-btn-anim-thin:before{border-style: solid;border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}
+.p-1h64827 .pagelayer-btn-holder, .p-1h64827 .pagelayer-btn-anim-glow:before{border-radius: 0px 0px 0px 0px; -webkit-border-radius:  0px 0px 0px 0px;-moz-border-radius: 0px 0px 0px 0px}
+</style><a class="pagelayer-btn-holder pagelayer-ele-link pagelayer-btn-custom pagelayer-btn-mini {{icon_position}}" href="#">
+					
+					<span class="pagelayer-btn-text">Read more</span>
+					
+				</a></div>
+</div></div>
+<div pagelayer-id="0dz5308" class="p-0dz5308 pagelayer-col fadeInRight pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="0dz5308">.p-0dz5308 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="0dz5308"]{width: 50%}
+.p-0dz5308 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-0dz5308{-webkit-animation-delay: 800ms; animation-delay: 800ms}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="3sy2898" class="p-3sy2898 pagelayer-heading" align="right">
+<style pagelayer-style-id="3sy2898">.p-3sy2898{text-align: right}
+.p-3sy2898 .pagelayer-heading-holder *{color:#303030;font-family: Roboto !important; font-size: 15px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+.p-3sy2898 .pagelayer-heading-holder{color:#303030;font-family: Roboto !important; font-size: 15px !important; font-style:  !important; font-weight: 500 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+Write a comment</div>
+		
+			</div>
+<div pagelayer-id="im95938" class="p-im95938 pagelayer-iconbox">
+<style pagelayer-style-id="im95938">.p-im95938 .pagelayer-service-icon i{color:#fe0000;-webkit-transition: all 400ms; transition: all 400ms}
+.p-im95938 .pagelayer-service-icon{font-size:18px}
+@media (max-width: 768px) and (min-width: 361px){.p-im95938 .pagelayer-service-icon{font-size:16px}}
+@media (max-width: 360px){.p-im95938 .pagelayer-service-icon{font-size:14px}}
+.p-im95938 .pagelayer-service-heading{text-align:right;padding-top:0px; padding-right:10px; padding-bottom:10px; padding-left:0px;color:#303030;font-family: Cabin; font-size: 22px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important;-webkit-transition: all 400ms; transition: all 400ms}
+@media (max-width: 768px) and (min-width: 361px){.p-im95938 .pagelayer-service-heading{font-family: ; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-im95938 .pagelayer-service-heading{font-family: ; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-im95938 .pagelayer-service-details{text-align:center}
+.p-im95938 .pagelayer-service-btn{-webkit-transition: all 400ms; transition: all 400ms}
+</style><div class="pagelayer-service-container pagelayer-service-align-right pagelayer-service-vertical-top">
+			<div class="pagelayer-service-icon pagelayer-service-default">
+				<i class="fas fa-heart pagelayer-icon-{{service_icon_shape_type}} pagelayer-animation-{{anim_hover}}" aria-hidden="true"></i>
+			</div>
+			<div class="pagelayer-service-details">
+				
+					<div class="pagelayer-service-heading">50</div>
+				
+				<div class="pagelayer-service-text">
+
+
+
+
+</div>
+				
+			</div>
+			 
+		</div></div>
+</div></div>
+</div></div>
+<div pagelayer-id="pnw5039" class="p-pnw5039 pagelayer-inner_row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="pnw5039">.p-pnw5039 .pagelayer-col-holder{padding: 10px}
+.p-pnw5039 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-pnw5039 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-pnw5039 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-pnw5039 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-pnw5039 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="g5b5673" class="p-g5b5673 pagelayer-col">
+<style pagelayer-style-id="g5b5673">.p-g5b5673 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.p-g5b5673 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="m733971" class="p-m733971 pagelayer-btn fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="m733971">.p-m733971 .pagelayer-btn-text{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important}
+.p-m733971 .pagelayer-btn-holder{font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: px !important; word-spacing: px !important;background-color: rgba(0,0,0,0.00);color: #303030;-webkit-transition: all 400ms !important; transition: all 400ms !important;border-color: #fcdca9}
+@media (max-width: 768px) and (min-width: 361px){.p-m733971 .pagelayer-btn-text{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-m733971 .pagelayer-btn-holder{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-m733971 .pagelayer-btn-text{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-m733971 .pagelayer-btn-holder{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-m733971{text-align: center;padding-top: 30px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;-webkit-animation-delay: 900ms; animation-delay: 900ms}
+.p-m733971 .pagelayer-btn-anim-thin{background-color: unset !important;border-style: unset !important}
+.p-m733971 .pagelayer-btn-anim-thin::before{background-color: rgba(0,0,0,0.00)}
+.p-m733971 .pagelayer-btn-anim-thin::after{background-color: rgba(0,0,0,0.00)}
+.p-m733971 .pagelayer-btn-holder, .p-m733971 .pagelayer-btn-anim-thin:after, .p-m733971 .pagelayer-btn-anim-thin:before{border-style: solid;border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}
+.p-m733971 .pagelayer-btn-holder, .p-m733971 .pagelayer-btn-anim-glow:before{border-radius: 0px 0px 0px 0px; -webkit-border-radius:  0px 0px 0px 0px;-moz-border-radius: 0px 0px 0px 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-m733971{padding-top: 15px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+@media (max-width: 360px){.p-m733971{padding-top: 15px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><a class="pagelayer-btn-holder pagelayer-ele-link pagelayer-btn-custom pagelayer-btn-mini {{icon_position}}" href="#">
+					
+					<span class="pagelayer-btn-text">more post</span>
+					
+				</a></div>
+</div></div>
+</div></div>
+</div></div>
+</div></div>
+<div pagelayer-id="5lw3660" class="p-5lw3660 pagelayer-row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="5lw3660">.p-5lw3660 .pagelayer-col-holder{padding: 10px}
+.p-5lw3660 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-5lw3660 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-5lw3660 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-5lw3660 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-5lw3660 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+.p-5lw3660{padding-top: 0px; padding-right: 0px; padding-bottom: 80px; padding-left: 0px}
+@media (max-width: 360px){.p-5lw3660{padding-top: 0px; padding-right: 0px; padding-bottom: 40px; padding-left: 0px}}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="4ec4120" class="p-4ec4120 pagelayer-col">
+<style pagelayer-style-id="4ec4120">.p-4ec4120 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.p-4ec4120 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="iy35148" class="p-iy35148 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="iy35148">.p-iy35148{text-align: center;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+.p-iy35148 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 30px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+.p-iy35148 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 30px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-iy35148 .pagelayer-heading-holder *{font-family:  !important; font-size: 25px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-iy35148 .pagelayer-heading-holder{font-family:  !important; font-size: 25px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-iy35148 .pagelayer-heading-holder *{font-family:  !important; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-iy35148 .pagelayer-heading-holder{font-family:  !important; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+about me</div>
+		
+			</div>
+<div pagelayer-id="2a64208" class="p-2a64208 pagelayer-divider fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="2a64208">.p-2a64208 .pagelayer-divider-seperator{border-top-style: solid;border-top-color: #fcdca9;border-top-width: 2px;width: 7%}
+.p-2a64208 .pagelayer-divider-holder{padding-top: 10px; padding-bottom: 10px;text-align: center}
+.p-2a64208{margin-top: -15px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;-webkit-animation-delay: 700ms; animation-delay: 700ms}
+</style><div class="pagelayer-divider-holder">
+			<span class="pagelayer-divider-seperator"></span>
+		</div></div>
+<div pagelayer-id="7hr3814" class="p-7hr3814 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="7hr3814">.p-7hr3814{padding-top: 0%; padding-right: 24%; padding-bottom: 0%; padding-left: 24%;-webkit-animation-delay: 800ms; animation-delay: 800ms}
+@media (max-width: 768px) and (min-width: 361px){.p-7hr3814{padding-top: 0%; padding-right: 15%; padding-bottom: 0%; padding-left: 15%}}
+@media (max-width: 360px){.p-7hr3814{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-text-holder">
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:1.8;text-align:center;color:#5d5d5d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi. Vestibulum ac elementum massa. In rutrum quis risus quis sollicitudin.</p></div></div>
+<div pagelayer-id="aj18042" class="p-aj18042 pagelayer-inner_row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="aj18042">.p-aj18042 .pagelayer-col-holder{padding: 10px}
+.p-aj18042>.pagelayer-row-holder .pagelayer-col{align-content: center}
+.p-aj18042 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-aj18042 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-aj18042 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-aj18042 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-aj18042 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+.p-aj18042{padding-top: 30px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="pec8458" class="p-pec8458 pagelayer-col">
+<style pagelayer-style-id="pec8458">.p-pec8458 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="pec8458"]{width: 50%}
+@media (max-width: 360px){.pagelayer-row-holder [pagelayer-id="pec8458"]{width: 100%}}
+.p-pec8458 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="15f8623" class="p-15f8623 pagelayer-heading fadeInUp pagelayer-wow pagelayer-anim-slowest" align="left">
+<style pagelayer-style-id="15f8623">.p-15f8623{text-align: left;-webkit-animation-delay: 600ms; animation-delay: 600ms}
+.p-15f8623 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 40px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: 2px !important; word-spacing: px !important}
+.p-15f8623 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 40px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: 2px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-15f8623 .pagelayer-heading-holder *{font-family:  !important; font-size: 28px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-15f8623 .pagelayer-heading-holder{font-family:  !important; font-size: 28px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-15f8623 .pagelayer-heading-holder *{font-family:  !important; font-size: 25px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-15f8623 .pagelayer-heading-holder{font-family:  !important; font-size: 25px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+Hi...</div>
+		
+			</div>
+<div pagelayer-id="yir8777" class="p-yir8777 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="yir8777">.p-yir8777{padding-top: 3%; padding-right: 0%; padding-bottom: 0%; padding-left: 0%;-webkit-animation-delay: 700ms; animation-delay: 700ms}
+</style><div class="pagelayer-text-holder">
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:2;text-align:left;color:#5d5d5d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi. Vestibulum ac elementum massa. In rutrum quis risus quis sollicitudin. Pellentesque non eros ante. Vestibulum sed tristique massa. Quisque et feugiat risus, eu tristique felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Pellentesque varius ipsum in urna semper volutpat. Etiam ac magna scelerisque, sodales enim at, interdum nibh. Nulla nec blandit orci. Ut suscipit sollicitudin varius. Etiam ut bibendum purus, sit amet tristique lectus</p></div></div>
+<div pagelayer-id="vor8367" class="p-vor8367 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest pagelayer-hide-tablet">
+<style pagelayer-style-id="vor8367">.p-vor8367{padding-top: 0%; padding-right: 0%; padding-bottom: 0%; padding-left: 0%;-webkit-animation-delay: 800ms; animation-delay: 800ms}
+</style><div class="pagelayer-text-holder">
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:2;text-align:left;color:#5d5d5d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi. Vestibulum ac elementum massa. In rutrum quis risus quis sollicitudin. Pellentesque non eros ante. Vestibulum sed tristique massa. Quisque et feugiat risus, eu tristique felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Pellentesque varius ipsum in urna semper volutpat. Etiam ac magna scelerisque, sodales enim at, interdum nibh. Nulla nec blandit orci. Ut suscipit sollicitudin varius. Etiam ut bibendum purus, sit amet tristique lectus</p></div></div>
+<div pagelayer-id="6wh8183" class="p-6wh8183 pagelayer-text fadeInUp pagelayer-wow pagelayer-anim-slowest">
+<style pagelayer-style-id="6wh8183">.p-6wh8183{padding-top: 0%; padding-right: 0%; padding-bottom: 0%; padding-left: 0%;-webkit-animation-delay: 900ms; animation-delay: 900ms}
+</style><div class="pagelayer-text-holder">
+
+
+
+<p style="font-family:roboto;font-weight:500;font-size:14px;line-height:2;text-align:left;color:#5d5d5d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat vestibulum nisi.</p></div></div>
+</div></div>
+<div pagelayer-id="hjq6117" class="p-hjq6117 pagelayer-col">
+<style pagelayer-style-id="hjq6117">.p-hjq6117 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="hjq6117"]{width: 50%}
+.p-hjq6117 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="xmv5118" class="p-xmv5118 pagelayer-image fadeInRight pagelayer-wow pagelayer-anim-slowest" align="left">
+<style pagelayer-style-id="xmv5118">.p-xmv5118 .pagelayer-image-holder{text-align: left}
+.p-xmv5118 .pagelayer-image-holder .pagelayer-image-overlay-content{text-align: left}
+.p-xmv5118 .pagelayer-img{-webkit-transition: all 400ms; transition: all 400ms}
+.p-xmv5118 .pagelayer-image-caption{color: #0986c0}
+.p-xmv5118{-webkit-animation-delay: 700ms; animation-delay: 700ms}
+</style><div class="pagelayer-image-holder pagelayer-anim-par">
+			
+				<img class="pagelayer-img pagelayer-animation-{{anim_hover}}" src="https://andlesgames.ru/wp-content/uploads/2021/07/about.jpg" title="about" alt="about" srcset="https://andlesgames.ru/wp-content/uploads/2021/07/about.jpg, https://andlesgames.ru/wp-content/uploads/2021/07/about.jpg 1x, " />
+				
+			
+		</div>
+		</div>
+<div pagelayer-id="6d71166" class="p-6d71166 pagelayer-heading fadeInRight pagelayer-wow pagelayer-anim-slowest" align="center">
+<style pagelayer-style-id="6d71166">.p-6d71166{text-align: center;-webkit-animation-delay: 800ms; animation-delay: 800ms}
+.p-6d71166 .pagelayer-heading-holder *{color:#012233;font-family: Cabin !important; font-size: 28px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+.p-6d71166 .pagelayer-heading-holder{color:#012233;font-family: Cabin !important; font-size: 28px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 5px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-6d71166 .pagelayer-heading-holder *{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-6d71166 .pagelayer-heading-holder{font-family:  !important; font-size: 22px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-6d71166 .pagelayer-heading-holder *{font-family:  !important; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-6d71166 .pagelayer-heading-holder{font-family:  !important; font-size: 20px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-heading-holder">
+
+
+
+
+
+
+
+jose aragones</div>
+		
+			</div>
+</div></div>
+</div></div>
+</div></div>
+</div></div>
+	</div><!-- .entry-content -->
+
+	</article><!-- #post-14 -->
+
+	</main><!-- #main -->
+
+
+	<footer class="pagelayer-footer"><div pagelayer-id="ke69249" class="p-ke69249 pagelayer-row pagelayer-row-stretch-auto pagelayer-height-default">
+<style pagelayer-style-id="ke69249">.p-ke69249 .pagelayer-col-holder{padding: 10px}
+.p-ke69249 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-ke69249 .pagelayer-svg-top .pagelayer-shape-fill{fill:#227bc3}
+.p-ke69249 .pagelayer-row-svg .pagelayer-svg-top{width:100%;height:100px}
+.p-ke69249 .pagelayer-svg-bottom .pagelayer-shape-fill{fill:#e44993}
+.p-ke69249 .pagelayer-row-svg .pagelayer-svg-bottom{width:100%;height:100px}
+.p-ke69249{background: #012233;padding-top: 60px; padding-right: 0px; padding-bottom: 60px; padding-left: 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-ke69249{padding-top: 40px; padding-right: 0px; padding-bottom: 40px; padding-left: 0px}}
+@media (max-width: 360px){.p-ke69249{padding-top: 30px; padding-right: 0px; padding-bottom: 30px; padding-left: 0px}}
+</style>
+			
+			
+			
+			
+			<div class="pagelayer-row-holder pagelayer-row pagelayer-auto pagelayer-width-auto">
+<div pagelayer-id="4ww2382" class="p-4ww2382 pagelayer-col">
+<style pagelayer-style-id="4ww2382">.p-4ww2382 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="4ww2382"]{width: 25%}
+@media (max-width: 768px) and (min-width: 361px){.pagelayer-row-holder [pagelayer-id="4ww2382"]{width: 30%}}
+@media (max-width: 360px){.pagelayer-row-holder [pagelayer-id="4ww2382"]{width: 100%}}
+.p-4ww2382 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-4ww2382{padding-top: 0px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px}
+@media (max-width: 768px) and (min-width: 361px){.p-4ww2382{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="twa6093" class="p-twa6093 pagelayer-wp_title">
+<style pagelayer-style-id="twa6093">.p-twa6093 .pagelayer-wp-title-heading{font-family: Cabin; font-size: 26px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 3px !important; word-spacing: px !important;color:#ffffff;text-align:left;padding: 0px 0px 0px 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-twa6093 .pagelayer-wp-title-heading{font-family: ; font-size: 18px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-twa6093 .pagelayer-wp-title-heading{font-family: ; font-size: 17px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+</style><div class="pagelayer-wp-title-content">
+			<div class="pagelayer-wp-title-section">
+				<a href="https://andlesgames.ru" class="pagelayer-wp-title-link pagelayer-ele-link">
+					
+					<div class="pagelayer-wp-title-holder">
+						<div class="pagelayer-wp-title-heading">Andles Games</div>
+						
+					</div>
+				</a>
+			</div>			
+		<div></div></div></div>
+<div pagelayer-id="mgt1052" class="p-mgt1052 pagelayer-text">
+<style pagelayer-style-id="mgt1052">.p-mgt1052{padding-top: 0%; padding-right: 0%; padding-bottom: 0%; padding-left: 0%}
+@media (max-width: 768px) and (min-width: 361px){.p-mgt1052{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+@media (max-width: 360px){.p-mgt1052{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-text-holder">
+<p style="font-family:roboto;font-size:14px;font-weight:300;line-height:1.5;text-align:left;color:#fff">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam justo, scelerisque non felis porta, placerat si. Vestibulum ac elementum massa. In rutrum quis risus quis sollicitudin.</p></div></div>
+<div pagelayer-id="mh98246" class="p-mh98246 pagelayer-social_grp">
+<style pagelayer-style-id="mh98246">.p-mh98246{text-align: left}
+.p-mh98246 > div{display: inline-block}
+.p-mh98246 .pagelayer-social{padding: 15px}
+@media (max-width: 768px) and (min-width: 361px){.p-mh98246 .pagelayer-social{padding: 15px}}
+.p-mh98246 .pagelayer-social-fa{font-size: 16px;color: #ffffff !important;-webkit-transition: all 400ms; transition: all 400ms}
+.p-mh98246 .pagelayer-icon-holder{font-size: 16px;-webkit-transition: all 400ms; transition: all 400ms}
+@media (max-width: 768px) and (min-width: 361px){.p-mh98246 .pagelayer-social-fa{font-size: 13px}}
+@media (max-width: 768px) and (min-width: 361px){.p-mh98246 .pagelayer-icon-holder{font-size: 13px}}
+@media (max-width: 360px){.p-mh98246 .pagelayer-social-fa{font-size: 14px}}
+@media (max-width: 360px){.p-mh98246 .pagelayer-icon-holder{font-size: 14px}}
+.p-mh98246 .pagelayer-icon-holder:hover .pagelayer-social-fa{color: #ffffff !important}
+</style>
+<div pagelayer-id="b695837" class="p-b695837 pagelayer-social">
+<div class="pagelayer-icon-holder pagelayer-facebook-f" data-icon="fab fa-facebook-f">
+					<a class="pagelayer-ele-link" href="https://www.facebook.com/sitepad">
+						<i class="pagelayer-social-fa fab fa-facebook-f"></i>
+					</a>
+				</div></div>
+<div pagelayer-id="l683215" class="p-l683215 pagelayer-social">
+<div class="pagelayer-icon-holder pagelayer-twitter" data-icon="fab fa-twitter">
+					<a class="pagelayer-ele-link" href="https://twitter.com/sitepad">
+						<i class="pagelayer-social-fa fab fa-twitter"></i>
+					</a>
+				</div></div>
+<div pagelayer-id="wza4785" class="p-wza4785 pagelayer-social">
+<div class="pagelayer-icon-holder pagelayer-instagram" data-icon="fab fa-instagram">
+					<a class="pagelayer-ele-link" href="https://www.instagram.com/sitepad">
+						<i class="pagelayer-social-fa fab fa-instagram"></i>
+					</a>
+				</div></div>
+<div pagelayer-id="xsp9402" class="p-xsp9402 pagelayer-social">
+<div class="pagelayer-icon-holder pagelayer-pinterest-p" data-icon="fab fa-pinterest-p">
+					<a class="pagelayer-ele-link" href="https://www.instagram.com/sitepad">
+						<i class="pagelayer-social-fa fab fa-pinterest-p"></i>
+					</a>
+				</div></div>
+</div>
+</div></div>
+<div pagelayer-id="sua3940" class="p-sua3940 pagelayer-col">
+<style pagelayer-style-id="sua3940">.p-sua3940 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="sua3940"]{width: 25%}
+@media (max-width: 768px) and (min-width: 361px){.pagelayer-row-holder [pagelayer-id="sua3940"]{width: 22%}}
+@media (max-width: 360px){.pagelayer-row-holder [pagelayer-id="sua3940"]{width: 100%}}
+.p-sua3940 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-sua3940{padding-top: 0px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px}
+@media (max-width: 768px) and (min-width: 361px){.p-sua3940{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="c3y8569" class="p-c3y8569 pagelayer-heading">
+<style pagelayer-style-id="c3y8569">.p-c3y8569 .pagelayer-heading-holder *{color:#ffffff;font-family: Cabin !important; font-size: 20px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+.p-c3y8569 .pagelayer-heading-holder{color:#ffffff;font-family: Cabin !important; font-size: 20px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+navigation</div>
+		
+			</div>
+<div pagelayer-id="gww1596" class="p-gww1596 pagelayer-list">
+<style pagelayer-style-id="gww1596">.p-gww1596 li{list-style-type: none;font-family: Roboto; font-size: 14px !important; font-style:  !important; font-weight: 400 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Capitalize !important; letter-spacing: px !important; word-spacing: px !important}
+.p-gww1596 .pagelayer-list-icon-holder{padding-bottom: calc(18px/2); padding-top: calc(18px/2)}
+.p-gww1596 .pagelayer-list-item{color:#ffffff;margin-left: 10px}
+.p-gww1596 li > a{font-family: Roboto; font-size: 14px !important; font-style:  !important; font-weight: 400 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Capitalize !important; letter-spacing: px !important; word-spacing: px !important}
+.p-gww1596 .pagelayer-list-icon{color:#0986c0}
+.p-gww1596{padding-top: 10px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+</style><ul class="pagelayer-list-ul pagelayer-list-type-none">
+<div pagelayer-id="g8r4711" class="p-g8r4711 pagelayer-list_item">
+<li class="pagelayer-list-li">
+				
+					<span class="pagelayer-list-icon-holder">
+						
+						<span class="pagelayer-list-item">
+
+Travel</span>
+					</span>
+				
+			</li></div>
+<div pagelayer-id="qlk1420" class="p-qlk1420 pagelayer-list_item">
+<li class="pagelayer-list-li">
+				
+					<span class="pagelayer-list-icon-holder">
+						
+						<span class="pagelayer-list-item">
+
+business</span>
+					</span>
+				
+			</li></div>
+<div pagelayer-id="v9m5635" class="p-v9m5635 pagelayer-list_item">
+<li class="pagelayer-list-li">
+				
+					<span class="pagelayer-list-icon-holder">
+						
+						<span class="pagelayer-list-item">
+
+lifestyle</span>
+					</span>
+				
+			</li></div>
+<div pagelayer-id="znx5630" class="p-znx5630 pagelayer-list_item">
+<li class="pagelayer-list-li">
+				
+					<span class="pagelayer-list-icon-holder">
+						
+						<span class="pagelayer-list-item">
+
+video</span>
+					</span>
+				
+			</li></div>
+<div pagelayer-id="6ll2144" class="p-6ll2144 pagelayer-list_item">
+<li class="pagelayer-list-li">
+				
+					<span class="pagelayer-list-icon-holder">
+						
+						<span class="pagelayer-list-item">
+
+markets</span>
+					</span>
+				
+			</li></div>
+</ul></div>
+</div></div>
+<div pagelayer-id="2dw2298" class="p-2dw2298 pagelayer-col">
+<style pagelayer-style-id="2dw2298">.p-2dw2298 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="2dw2298"]{width: 25%}
+@media (max-width: 768px) and (min-width: 361px){.pagelayer-row-holder [pagelayer-id="2dw2298"]{width: 22%}}
+@media (max-width: 360px){.pagelayer-row-holder [pagelayer-id="2dw2298"]{width: 100%}}
+.p-2dw2298 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-2dw2298{padding-top: 0px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px}
+@media (max-width: 768px) and (min-width: 361px){.p-2dw2298{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="pd42121" class="p-pd42121 pagelayer-heading">
+<style pagelayer-style-id="pd42121">.p-pd42121 .pagelayer-heading-holder *{color:#ffffff;font-family: Cabin !important; font-size: 20px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+.p-pd42121 .pagelayer-heading-holder{color:#ffffff;font-family: Cabin !important; font-size: 20px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+newsletter</div>
+		
+			</div>
+<div pagelayer-id="fez7135" class="p-fez7135 pagelayer-contact">
+<style pagelayer-style-id="fez7135">.p-fez7135 .pagelayer-contact-form{text-align: default}
+.p-fez7135 label{padding-top:px; padding-right:px; padding-bottom:10px; padding-left:px}
+.p-fez7135 ::placeholder{color: #ffffff;font-family: Roboto !important; font-size: 13px !important; font-style:  !important; font-weight: 300 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Capitalize !important; letter-spacing: px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-fez7135 ::placeholder{font-family:  !important; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-fez7135 textarea, .p-fez7135 input, .p-fez7135 select, .p-fez7135 date{color: #ffffff;background-color: rgba(0,0,0,0.00)}
+.p-fez7135 input, .p-fez7135 select, .p-fez7135 textarea{line-height: 15px; min-height: 15px;padding-top:10px; padding-right:10px; padding-bottom:10px; padding-left:10px;border-style: solid;border-color: #fcdca9;border-radius: 0px 0px 0px 0px; -webkit-border-radius:  0px 0px 0px 0px;-moz-border-radius: 0px 0px 0px 0px;-webkit-transition: all 400ms; transition: all 400ms}
+.p-fez7135 input[type="checkbox"] + label:before, .p-fez7135 input[type="radio"]{height:10px; min-height:10px;  width:10px}
+.p-fez7135 input[type="checkbox"] + label:before{border-style: solid;border-color: #fcdca9}
+.p-fez7135 input, .p-fez7135 select, .p-fez7135 textarea, .p-fez7135 input[type="checkbox"] + label:before{border-top-width: 0px; border-right-width: 0px; border-bottom-width: 2px; border-left-width: 2px}
+.p-fez7135 .pagelayer-btn-text{font-family: Cabin; font-size: 13px !important; font-style:  !important; font-weight: 600 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: 1.5px !important; word-spacing: px !important}
+.p-fez7135 .pagelayer-btn-holder{font-family: Cabin; font-size: 13px !important; font-style:  !important; font-weight: 600 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1em !important; text-transform: Uppercase !important; letter-spacing: 1.5px !important; word-spacing: px !important;padding-top:10px; padding-right:30px; padding-bottom:10px; padding-left:30px;background-color: rgba(0,0,0,0.00);color: #ffffff;-webkit-transition: all 400ms !important; transition: all 400ms !important;border-style: solid;border-color: #fcdca9;border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px;border-radius: 0px 0px 0px 0px; -webkit-border-radius:  0px 0px 0px 0px;-moz-border-radius: 0px 0px 0px 0px}
+@media (max-width: 768px) and (min-width: 361px){.p-fez7135 .pagelayer-btn-text{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 768px) and (min-width: 361px){.p-fez7135 .pagelayer-btn-holder{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-fez7135 .pagelayer-btn-text{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-fez7135 .pagelayer-btn-holder{font-family: ; font-size: 12px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-fez7135 .pagelayer-contact-submit-btn{margin-top:0px; margin-right:0px; margin-bottom:0px; margin-left:10px}
+.p-fez7135 .pagelayer-contact-submit-holder{text-align:left}
+.p-fez7135{padding-top: 20px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+@media (max-width: 360px){.p-fez7135{padding-top: 25px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style><div class="pagelayer-contact-form-div pagelayer-contact-form-holder">
+					<div class="pagelayer-message-box pagelayer-message-top"></div>
+					
+					<form class="pagelayer-contact-form" id="contact-form" name="Contact Form" onsubmit="return pagelayer_contact_submit(this, event)" method="POST">
+						<div class="pagelayer-contact-holder">
+<div pagelayer-id="aco4928" class="p-aco4928 pagelayer-contact_item">
+<style pagelayer-style-id="aco4928">[pagelayer-id="aco4928"]{width:100%;display:inline-block}
+@media (max-width: 360px){[pagelayer-id="aco4928"]{width:100%}}
+.p-aco4928{padding-top:0px; padding-right:10px; padding-bottom:35px; padding-left:0px}
+@media (max-width: 360px){.p-aco4928{padding-top:0px; padding-right:10px; padding-bottom:10px; padding-left:10px}}
+</style><input type="email" placeholder="enter your name:" name="Fieldname" /></div>
+<div pagelayer-id="sv51497" class="p-sv51497 pagelayer-contact_item">
+<style pagelayer-style-id="sv51497">[pagelayer-id="sv51497"]{width:100%;display:inline-block}
+@media (max-width: 360px){[pagelayer-id="sv51497"]{width:100%}}
+.p-sv51497{padding-top:0px; padding-right:10px; padding-bottom:35px; padding-left:0px}
+@media (max-width: 360px){.p-sv51497{padding-top:0px; padding-right:10px; padding-bottom:25px; padding-left:10px}}
+</style><input type="email" placeholder="enter your email:" name="Fieldname" /></div>
+</div>
+						<input type="hidden" name="cfa-pagelayer-id" />
+						<input type="hidden" name="cfa-post-id" value="3922" />
+						
+						
+						
+						<div class="pagelayer-contact-submit-holder">
+							<button type="submit" form="contact-form" class="pagelayer-contact-submit-btn pagelayer-btn-holder pagelayer-ele-link pagelayer-btn-custom pagelayer-btn-custom {{icon_position}}">
+								<i class="fa fa-circle-o-notch fa-spin" style="display:none;margin-right:5px;"></i>
+								
+								<span class="pagelayer-btn-text">subscribe</span>
+								
+							</button>
+						<div>
+					</div></div></form>
+					<div class="pagelayer-message-box pagelayer-message-bottom"></div>
+			</div></div>
+</div></div>
+<div pagelayer-id="jpg8860" class="p-jpg8860 pagelayer-col">
+<style pagelayer-style-id="jpg8860">.p-jpg8860 .pagelayer-col-holder > div:not(:last-child){margin-bottom: 15px}
+.pagelayer-row-holder [pagelayer-id="jpg8860"]{width: 25%}
+@media (max-width: 768px) and (min-width: 361px){.pagelayer-row-holder [pagelayer-id="jpg8860"]{width: 25%}}
+@media (max-width: 360px){.pagelayer-row-holder [pagelayer-id="jpg8860"]{width: 100%}}
+.p-jpg8860 > .pagelayer-background-overlay{-webkit-transition: all 400ms !important; transition: all 400ms !important}
+.p-jpg8860{padding-top: 0px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px}
+@media (max-width: 768px) and (min-width: 361px){.p-jpg8860{padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}}
+</style>
+				
+				
+				
+				<div class="pagelayer-col-holder">
+<div pagelayer-id="58t8201" class="p-58t8201 pagelayer-heading">
+<style pagelayer-style-id="58t8201">.p-58t8201 .pagelayer-heading-holder *{color:#ffffff;font-family: Cabin !important; font-size: 20px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+.p-58t8201 .pagelayer-heading-holder{color:#ffffff;font-family: Cabin !important; font-size: 20px !important; font-style:  !important; font-weight: 700 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform: Uppercase !important; letter-spacing: 2px !important; word-spacing: px !important}
+</style><div class="pagelayer-heading-holder">
+contact info</div>
+		
+			</div>
+<div pagelayer-id="ikz7931" class="p-ikz7931 pagelayer-address">
+<style pagelayer-style-id="ikz7931">.p-ikz7931 .pagelayer-address *, .p-ikz7931 .pagelayer-address{color:#ffffff;font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 400 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1.5em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-ikz7931 .pagelayer-address *, .p-ikz7931 .pagelayer-address{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-ikz7931 .pagelayer-address *, .p-ikz7931 .pagelayer-address{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-ikz7931 .pagelayer-address-holder{justify-content: flex-start}
+body:not(.rtl) .p-ikz7931 .pagelayer-address-icon{margin-right: 15px}
+body.rtl .p-ikz7931 .pagelayer-address-icon{margin-left:15px}
+.p-ikz7931 .pagelayer-address-icon i{font-size: 16px}
+@media (max-width: 360px){.p-ikz7931 .pagelayer-address-icon i{font-size: 14px}}
+.p-ikz7931{padding-top: 10px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+</style><div class="pagelayer-address-holder">
+			<span class="pagelayer-address-icon"><i class="fas fa-map-marker-alt"></i></span>
+			<span class="pagelayer-address">1, My Address, My Street, New York City, NY, USA</span>
+		</div></div>
+<div pagelayer-id="x618606" class="p-x618606 pagelayer-phone">
+<style pagelayer-style-id="x618606">.p-x618606 .pagelayer-phone *, .p-x618606 .pagelayer-phone{color:#ffffff;font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 400 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1.5em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-x618606 .pagelayer-phone *, .p-x618606 .pagelayer-phone{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-x618606 .pagelayer-phone *, .p-x618606 .pagelayer-phone{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-x618606 .pagelayer-phone-holder{justify-content: flex-start}
+body:not(.rtl) .p-x618606 .pagelayer-phone-icon{margin-right: 15px}
+body.rtl .p-x618606 .pagelayer-phone-icon{margin-left:15px}
+.p-x618606 .pagelayer-phone-icon i{color:#ffffff;font-size: 16px}
+@media (max-width: 360px){.p-x618606 .pagelayer-phone-icon i{font-size: 14px}}
+.p-x618606{padding-top: 10px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+</style><div class="pagelayer-phone-holder">
+			<span class="pagelayer-phone-icon"><i class="fas fa-phone-alt"></i></span>
+			
+				<span class="pagelayer-phone">+1234567890</span>
+			
+			</div></div>
+<div pagelayer-id="b6f3518" class="p-b6f3518 pagelayer-email">
+<style pagelayer-style-id="b6f3518">.p-b6f3518 .pagelayer-email *, .p-b6f3518 .pagelayer-email{color:#ffffff;font-family: Cabin; font-size: 14px !important; font-style:  !important; font-weight: 400 !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: 1.5em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}
+@media (max-width: 768px) and (min-width: 361px){.p-b6f3518 .pagelayer-email *, .p-b6f3518 .pagelayer-email{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+@media (max-width: 360px){.p-b6f3518 .pagelayer-email *, .p-b6f3518 .pagelayer-email{font-family: ; font-size: 13px !important; font-style:  !important; font-weight:  !important; font-variant:  !important; text-decoration-line:  !important; text-decoration-style: Solid !important; line-height: em !important; text-transform:  !important; letter-spacing: px !important; word-spacing: px !important}}
+.p-b6f3518 .pagelayer-email-holder{justify-content: flex-start}
+body:not(.rtl) .p-b6f3518 .pagelayer-email-icon{margin-right: 15px}
+body.rtl .p-b6f3518 .pagelayer-email-icon{margin-left:15px}
+.p-b6f3518 .pagelayer-email-icon i{color:#ffffff;font-size: 16px}
+@media (max-width: 360px){.p-b6f3518 .pagelayer-email-icon i{font-size: 14px}}
+.p-b6f3518{padding-top: 10px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+</style><div class="pagelayer-email-holder">
+			<span class="pagelayer-email-icon"><i class="far fa-envelope"></i></span>
+			<span class="pagelayer-email">contact@domain.com</span>
+				</div>
+			
+			</div>
+</div></div>
+</div></div>
+
+	</footer><link rel="preload" href="https://fonts.googleapis.com/css?family=Cabin%3A700%2C600%2C400%7Croboto%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i%7CRoboto%3A500%2C400%2C300" as="fetch" crossorigin="anonymous"><link rel='stylesheet' id='pagelayer-google-font-css'  href='https://fonts.googleapis.com/css?family=Cabin%3A700%2C600%2C400%7Croboto%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i%7CRoboto%3A500%2C400%2C300&#038;ver=1.6.6' media='all' />
+<script src='https://andlesgames.ru/wp-content/themes/popularfx/js/navigation.js?ver=1.2.0' id='popularfx-navigation-js'></script>
 </body>
-</html>
+	</html>
