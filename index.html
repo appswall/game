@@ -1,247 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Кальмар</title>
+    <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Mukta:700");
+* {
+  box-sizing: border-box;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
 
-<!doctype html>
-<html lang="en">
- <head> 
-  <meta charset="utf-8"> 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=no"> 
-  <meta name="apple-mobile-web-app-capable" content="yes"> 
-  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags --> 
-  <title>vk-yesno 1.0</title> 
-  <style type="text/css">
-	/* Disable user selection to avoid strange bug in Chrome on Windows:
-	* Selecting a text outside the canvas, then clicking+draging would
-	* drag the selected text but block mouse down/up events to the engine.
-	*/
-	body {
+body {
+  font-family: "Mukta", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+  background: #f3f8fa;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+button.learn-more {
+  width: 12rem;
+  height: auto;
+}
+button.learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #282936;
+  border-radius: 1.625rem;
+}
+button.learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+}
+button.learn-more .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+button.learn-more .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.25rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  transform: rotate(45deg);
+}
+button.learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: transparent;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+button:hover .circle {
+  width: 100%;
+}
+button:hover .circle .icon.arrow {
+  background: #fff;
+  transform: translate(1rem, 0);
+}
+button:hover .button-text {
+  color: #fff;
+}
+
+@supports (display: grid) {
+  body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0.625rem;
+    grid-template-areas: ". main main ." ". main main .";
+  }
+
+  #container {
+    grid-area: main;
+    align-self: center;
+    justify-self: center;
+  }
+}
+</style>
 	
-		position: fixed; /* Prevent overscroll */
+	<!-- Standardised web app manifest -->
+	<link rel="manifest" href="appmanifest.json" />
 	
-		margin:0;
-		padding:0;
-	}
+	<!-- Allow fullscreen mode on iOS devices. (These are Apple specific meta tags.) -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="apple-touch-icon" sizes="256x256" href="icon-256.png" />
+	<meta name="HandheldFriendly" content="true" />
+	
+	<!-- Chrome for Android web app tags -->
+	<meta name="mobile-web-app-capable" content="yes" />
+	<link rel="shortcut icon" sizes="256x256" href="icon-256.png" />
 
-	.canvas-app-container {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		align-items: center;
-		justify-content: center;
-		overflow: hidden;
-	}
+    <link rel="stylesheet" href="./style.css">
 
-	.canvas-app-container:-webkit-full-screen {
-		/* Auto width and height in Safari/Chrome fullscreen. */
-		width: auto;
-		height: auto;
-	}
+    <!-- All margins and padding must be zero for the canvas to fill the screen. -->
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		html, body {
+			background-image: url(./images/1.gif); /* Путь к фоновому изображению */
+			background-color: #3f51b5; /* Цвет фона */
+			overflow: hidden;
+			touch-action: none;
+			-ms-touch-action: none;
+		}
+		canvas {
+			touch-action-delay: none;
+			touch-action: none;
+			-ms-touch-action: none;
+            z-index: -1;
+		}
+    </style>
 
-	#canvas {
-		outline: none;
-		border: 0;
-		width: 100%;
-		vertical-align: bottom;
-	}
+	<!-- Yandex.RTB -->
+    <script>window.yaContextCb=window.yaContextCb||[]</script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
+	
 
-	canvas:focus, canvas:active {
-		outline: none;
-		border: 0;
-		ie-dummy: expression(this.hideFocus=true);
-		-moz-outline-style: none;
-	}
+</head> 
+ 
+<body> 
+	<div id="fb-root"></div>
+	
+    <div class="ya">
+<!-- Yandex.RTB R-A-1321038-17 -->
+ 
+<div id="container">
+  <button class="learn-more">
+    <span class="circle" aria-hidden="true">
+      <span class="icon arrow"></span>
+    </span>
+    <span onclick=VK.callMethod("showInviteBox"); class="button-text">Ёлку друзьям!</span>
+  </button>
+</div>
+	    
+    </div>
+    <div class="ya2">
+<!-- Yandex.RTB R-A-1321038-15 -->
+    </div>
+    <div class="ya3">
+<!-- Yandex.RTB R-A-1321038-16 -->
+    </div>
+	
+	<script>
+	// Issue a warning if trying to preview an exported project on disk.
+	(function(){
+		// Check for running exported on file protocol
+		if (window.location.protocol.substr(0, 4) === "file")
+		{
+			alert("Exported games won't work until you upload them. (When running on the file:/// protocol, browsers block many features from working for security reasons.)");
+		}
+	})();
+	</script>
+	
+	<!-- The canvas must be inside a div called c2canvasdiv -->
+	<div id="c2canvasdiv">
+	
+		<!-- The canvas the project will render to.  If you change its ID, don't forget to change the
+		ID the runtime looks for in the jQuery events above (ready() and cr_sizeCanvas()). -->
+		<canvas id="c2canvas" width="512" height="1024">
+			<!-- This text is displayed if the visitor's browser does not support HTML5.
+			You can change it, but it is a good idea to link to a description of a browser
+			and provide some links to download some popular HTML5-compatible browsers. -->
+			<h1>Your browser does not appear to support HTML5.  Try upgrading your browser to the latest version.  <a href="http://www.whatbrowser.org/">What is a browser?</a>
+			<br/><br/><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx">Microsoft Internet Explorer</a><br/>
+			<a href="http://www.mozilla.com/firefox/">Mozilla Firefox</a><br/>
+			<a href="http://www.google.com/chrome/">Google Chrome</a><br/>
+			<a href="http://www.apple.com/safari/download/">Apple Safari</a></h1>
+		</canvas>
+		
+	</div>
+	
+	<!-- Pages load faster with scripts at the bottom -->
+	
+	<!-- Construct 2 exported games require jQuery. -->
+	<script src="jquery-2.1.1.min.js"></script>
 
-	div {
-		-webkit-tap-highlight-color: rgba(0,0,0,0);
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
 
-		.canvas-app-progress {
-		position: absolute;
-		background-color: #d1dbeb;
-		height: 6px;
-		margin-top: -6px;
-		width: 100%;
-	}
+	
+    <!-- The runtime script.  You can rename it, but don't forget to rename the reference here as well.
+    This file will have been minified and obfuscated if you enabled "Minify script" during export. -->
+	<script src="c2runtime.js"></script>
 
-	.canvas-app-progress-bar {
-		font-size: 12px;
-		height: 6px;
-		color: rgb(255, 255, 255);
-		background-color: #1a72eb;
-		text-align: center;
-		line-height: 20px;
-	}
-	.link, .button {
-		font-family: sans-serif;
-		font-size: 14px;
-		font-weight: normal;
-		font-style: normal;
-		font-stretch: normal;
-		line-height: normal;
-		letter-spacing: 0px;
-		padding-top: 12px;
-	}
+    <script>
+		// Start the Construct 2 project running on window load.
+		jQuery(document).ready(function ()
+		{			
+			// Create new runtime using the c2canvas
+			cr_createRuntime("c2canvas");
+		});
+		
+		// Pause and resume on page becoming visible/invisible
+		function onVisibilityChanged() {
+			if (document.hidden || document.mozHidden || document.webkitHidden || document.msHidden)
+				cr_setSuspended(true);
+			else
+				cr_setSuspended(false);
+		};
+		
+		document.addEventListener("visibilitychange", onVisibilityChanged, false);
+		document.addEventListener("mozvisibilitychange", onVisibilityChanged, false);
+		document.addEventListener("webkitvisibilitychange", onVisibilityChanged, false);
+		document.addEventListener("msvisibilitychange", onVisibilityChanged, false);
+		
+		function OnRegisterSWError(e)
+		{
+			console.warn("Failed to register service worker: ", e);
+		};
+		
+		// Runtime calls this global method when ready to start caching (i.e. after startup).
+		// This registers the service worker which caches resources for offline support.
+		window.C2_RegisterSW = function C2_RegisterSW()
+		{
+			if (!navigator.serviceWorker)
+				return;		// no SW support, ignore call
+			
+			try {
+				navigator.serviceWorker.register("sw.js", { scope: "./" })
+				.then(function (reg)
+				{
+					console.log("Registered service worker on " + reg.scope);
+				})
+				.catch(OnRegisterSWError);
+			}
+			catch (e)
+			{
+				OnRegisterSWError(e);
+			}
+		};
+    </script>
 
-	.buttons-background {
-		background-color: #ffffff;
-		width: 100%;
-		height: 42px;
-	}
+    <style>
+        body,
+        html {
+            margin: 0 auto;
+            padding: 0 auto;
+            width: 100%;
+            height: 100%;
+            overflow: hidden
+        }
 
-	body {
-		background-color: #ffffff;
-	}
+        #adsbox {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+            display: none;
+        }
+    </style>
+    <script src="https://yandex.ru/games/sdk/v2"></script>
+    <div id="adsbox" style="display: block;"></div>
 
-	.canvas-app-container {
-		background: rgba(250,252,255,1);
-		background: -moz-linear-gradient(-45deg, rgba(250,252,255,1) 0%, rgba(250,252,255,1) 50%, rgba(245,249,255,1) 50%, rgba(245,249,255,1) 100%);
-		background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(250,252,255,1)), color-stop(50%, rgba(250,252,255,1)), color-stop(50%, rgba(245,249,255,1)), color-stop(100%, rgba(245,249,255,1)));
-		background: -webkit-linear-gradient(-45deg, rgba(250,252,255,1) 0%, rgba(250,252,255,1) 50%, rgba(245,249,255,1) 50%, rgba(245,249,255,1) 100%);
-		background: -o-linear-gradient(-45deg, rgba(250,252,255,1) 0%, rgba(250,252,255,1) 50%, rgba(245,249,255,1) 50%, rgba(245,249,255,1) 100%);
-		background: -ms-linear-gradient(-45deg, rgba(250,252,255,1) 0%, rgba(250,252,255,1) 50%, rgba(245,249,255,1) 50%, rgba(245,249,255,1) 100%);
-		background: linear-gradient(135deg, rgba(250,252,255,1) 0%, rgba(250,252,255,1) 50%, rgba(245,249,255,1) 50%, rgba(245,249,255,1) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafcff', endColorstr='#f5f9ff', GradientType=1 );
-	}
+    <script type="text/javascript">
+        $("#adsbox").click(function() {
+            ShowYaBanner();
+            $('#adsbox').hide();
+        });
+        setTimeout(function() {
+            $('#adsbox').show();
+        }, 1000);
 
-	.canvas-app-canvas {
-		background-repeat:no-repeat;
-		background-position: center center;
-		background-image: url("https://lampogolovii.github.io/vk-yesno/splash_1.png");
-	}
+        window.setInterval(function() {
+            $('#adsbox').show();
+        }, 60000);
+    </script>
 
-	</style> 
-  <script type="text/javascript">
-            (function (d) {
-                window.YaGamesPrivate_MsgQueue = [];
-                var send = function (cb_id, message_id, message) {
-                    if (typeof YaGamesPrivate !== "undefined") {
-                        YaGamesPrivate.send(cb_id, message_id, message);
-                    } else {
-                        YaGamesPrivate_MsgQueue.push([cb_id, message_id, message]);
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA');
+
+        if (YaGames) {
+            YaGames.init({
+                screen: {
+                    fullscreen: false
+                },
+                yandexApp: {
+                    enabled: true
+                },
+                adv: {
+                    onAdvClose: wasShown => {
+                        //cr_setSuspended(false);
                     }
-                };
+                }
+            }).then(function(ysdk) {
+                window.ysdk = ysdk;
+            });
+        }
 
-                var t = d.getElementsByTagName("script")[0];
-                var s = d.createElement("script");
-                s.src = "https://yandex.ru/games/sdk/v2";
-                s.async = true;
-                t.parentNode.insertBefore(s, t);
-                s.onload = function () {
-                    var options;
-                    // 
+        function ShowYaBanner() {
+            try {
+                ysdk.adv.showFullscreenAdv({
 
-                    YaGames.init(options)
-                        .then(function (ysdk) {
-                            // 
-
-                            send(0, "init", ysdk);
-                        })
-                        .catch(function (err) {
-                            send(0, "error", err + "");
-                        });
-                };
-                s.onerror = function () {
-                    send(0, "error", "Error loading SDK. Reload the page.");
-                };
-            })(document);
-        </script>
- </head> 
- <body> 
-  <div id="app-container" class="canvas-app-container"> 
-   <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="600" height="1067"></canvas> 
-   <div class="buttons-background"> 
-   </div> 
-  </div> 
-  <!-- --> 
-  <script id="engine-loader" type="text/javascript" src="https://lampogolovii.github.io/vk-yesno/dmloader.js"></script> 
-  <!-- --> 
-  <script id="engine-setup" type="text/javascript">
-	var extra_params = {
-		archive_location_filter: function( path ) {
-			return ("archive" + path + "");
-		},
-		engine_arguments: [],
-		custom_heap_size: 268435456,
-		disable_context_menu: true
-	}
-
-	Module['onRuntimeInitialized'] = function() {
-		Module.runApp("canvas", extra_params);
-	};
-
-	Module["locateFile"] = function(path, scriptDirectory)
-	{
-		// dmengine*.wasm is hardcoded in the built JS loader for WASM,
-		// we need to replace it here with the correct project name.
-		if (path == "dmengine.wasm" || path == "dmengine_release.wasm" || path == "dmengine_headless.wasm") {
-			path = "vkyesno.wasm";
-		}
-		return scriptDirectory + path;
-	};
-
-	var is_iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-	var buttonHeight = 0;
-	// Resize on init, screen resize and orientation change
-	function resize_game_canvas() {
-		// Hack for iOS when exit from Fullscreen mode
-		if (is_iOS) {
-			window.scrollTo(0, 0);
-		}
-
-		var app_container = document.getElementById('app-container');
-		var game_canvas = document.getElementById('canvas');
-		var innerWidth = window.innerWidth;
-		var innerHeight = window.innerHeight - buttonHeight;
-		var width = 600;
-		var height = 1067;
-		var targetRatio = width / height;
-		var actualRatio = innerWidth / innerHeight;
+                });
+            } catch (err) {}
+        }
+    </script>
 	
 	
+    <script type="text/javascript">
+    var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    if (mobile) {
+        $('.ya2, .ya3').css('display', 'none'); // or $('.ya2, .ya3').hide();
+    }
+    else
+    {
+        $('.ya').css('display', 'none'); // or $('.ya').hide();
+    }
+    </script>
 	
-		//Fit
-		if (actualRatio > targetRatio) {
-			width = innerHeight * targetRatio;
-			height = innerHeight;
-			app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
-			app_container.style.marginTop = "0px";
-		}
-		else {
-			width = innerWidth;
-			height = innerWidth / targetRatio;
-			app_container.style.marginLeft = "0px";
-			app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
-		}
-	
-	
-		app_container.style.width = width + "px";
-		app_container.style.height = height + buttonHeight + "px";
-		game_canvas.width = width;
-		game_canvas.height = height;
-	}
-	resize_game_canvas();
-	window.addEventListener('resize', resize_game_canvas, false);
-	window.addEventListener('orientationchange', resize_game_canvas, false);
-
-	function load_engine() {
-		var engineJS = document.createElement('script');
-		engineJS.type = 'text/javascript';
-		if (Module['isWASMSupported']) {
-			engineJS.src = 'https://lampogolovii.github.io/vk-yesno/vkyesno_wasm.js';
-		} else {
-			engineJS.src = 'https://lampogolovii.github.io/vk-yesno/vkyesno_asmjs.js';
-		}
-		document.head.appendChild(engineJS);
-	}
-	</script> 
-  <script id="engine-start" type="text/javascript">
-		EngineLoader.load("canvas", "vkyesno");
-	</script> 
-  <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>   
- </body>
-</html>
+    <!-- Yandex.Metrika counter -->
+</body> 
+</html> 
