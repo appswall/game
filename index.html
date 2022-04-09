@@ -350,6 +350,18 @@ button:hover .button-text {
         }
     </script>
 	
+	
+    <script type="text/javascript">
+    var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    if (mobile) {
+        $('.ya2, .ya3').css('display', 'none'); // or $('.ya2, .ya3').hide();
+    }
+    else
+    {
+        $('.ya').css('display', 'none'); // or $('.ya').hide();
+    }
+    </script>
+	
     <!-- Yandex.Metrika counter -->
 </body> 
 </html> 
